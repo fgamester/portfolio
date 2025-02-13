@@ -18,8 +18,23 @@ export default {
             '6': '#042633',
           }
         }
+      },
+      spacing: {
+        'pf-1': '5px',
+        'pf-2': '10px',
+        'pf-3': '15px',
+        'pf-4': '20px',
+        'pf-5': '25px',
+        'pf-6': '30px',
+        'pf-7': '35px',
+        'pf-8': '40px',
+        'pf-9': '45px',
+        'pf-10': '50px'
+      },
+      width: {
+        'cont': '370px'
       }
-    },
+    }
   },
   plugins: [],
 }
