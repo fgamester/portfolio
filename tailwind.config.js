@@ -32,7 +32,7 @@ export default {
         'pf-10': '50px'
       },
       width: {
-        'cont': '370px'
+        'cont': '390px'
       }
     }
   },

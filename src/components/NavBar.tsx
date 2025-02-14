@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function NavBar() {
     return (
-        <nav className="h-pf-10 px-pf-4 flex justify-between items-center bg-pf-dark-6 text-pf-dark-1">
+        <nav className="h-pf-10 px-pf-4 flex justify-between items-center bg-pf-dark-6 text-pf-dark-1 fixed top-0 left-0 right-0">
             <div className="flex gap-pf-6">
                 <div className="flex items-end">
                     <Link to='/' className="text-xl" >Home</Link>
