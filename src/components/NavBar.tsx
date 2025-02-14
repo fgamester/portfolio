@@ -8,10 +8,10 @@ export default function NavBar() {
                     <Link to='/' className="text-xl" >Home</Link>
                 </div>
                 <div className="flex items-end gap-pf-4">
-                    <Link to='/projects'>Projects</Link>
-                    <Link to='/exercises'>Exercises</Link>
-                    <Link to='/about'>About Me</Link>
-                    <Link to='/hobbies'>My hobbies</Link>
+                    <Link to='/projects' className="hover:underline underline-offset-2">Projects</Link>
+                    <Link to='/exercises' className="hover:underline underline-offset-2">Exercises</Link>
+                    <Link to='/about' className="hover:underline underline-offset-2">About Me</Link>
+                    <Link to='/hobbies' className="hover:underline underline-offset-2">My hobbies</Link>
                 </div>
             </div>
             <button className="bg-pf-dark-5 size-pf-7 rounded-full">
