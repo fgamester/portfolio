@@ -1,83 +1,105 @@
-export const HTML5 = () => {
+export const HTML5 = ({ key = 'html5' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#E34F26]">HTML5</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#E34F26]">HTML5</p>
   )
 }
 
-export const CSS = () => {
+export const CSS = ({ key = 'css' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#663399]">CSS</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#663399]">CSS</p>
   )
 }
 
-export const JavaScript = () => {
+export const JavaScript = ({ key = 'javascript' }) => {
   return (
-    <p className="text-black size-fit px-budget-x rounded-sm bg-[#F7DF1E]">JavaScript</p>
+    <p key={key} className="text-black size-fit px-budget-x rounded-sm bg-[#F7DF1E]">JavaScript</p>
   )
 }
 
-export const TypeScript = () => {
+export const TypeScript = ({ key = 'typescript' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#3178C6]">TypeScript</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#3178C6]">TypeScript</p>
   )
 }
 
-export const Bootstrap = () => {
+export const Bootstrap = ({ key = 'bootstrap' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#7952B3]">Bootstrap</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#7952B3]">Bootstrap</p>
   )
 }
 
-export const TailwindCSS = () => {
+export const TailwindCSS = ({ key = 'tailwindcss' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#06B6D4]">TailwindCSS</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#06B6D4]">TailwindCSS</p>
   )
 }
 
-export const React = () => {
+export const React = ({ key = 'react' }) => {
   return (
-    <p className="text-black size-fit px-budget-x rounded-sm bg-[#61DAFB]">React</p>
+    <p key={key} className="text-black size-fit px-budget-x rounded-sm bg-[#61DAFB]">React</p>
   )
 }
 
-export const Python = () => {
+export const Python = ({ key = 'python' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#3776AB]">Python</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#3776AB]">Python</p>
   )
 }
 
-export const MySQL = () => {
+export const MySQL = ({ key = 'mysql' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#4479A1]">MySQL</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#4479A1]">MySQL</p>
   )
 }
 
-export const PostgreSQL = () => {
+export const PostgreSQL = ({ key = 'postgresql' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#4169E1]">PostgreSQL</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#4169E1]">PostgreSQL</p>
   )
 }
 
-export const Docker = () => {
+export const Docker = ({ key = 'docker' }) => {
   return (
-    <p className="text-white size-fit px-budget-x rounded-sm bg-[#2496ED]">Docker</p>
+    <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#2496ED]">Docker</p>
   )
 }
 
-export default function Badges() {
+const BadgesComponents = {
+  'html5': <HTML5 />,
+  'css': <CSS />,
+  'javascript': <JavaScript />,
+  'typescript': <TypeScript />,
+  'bootstrap': <Bootstrap />,
+  'tailwindcss': <TailwindCSS />,
+  'react': <React />,
+  'python': <Python />,
+  'mysql': <MySQL />,
+  'postgresql': <PostgreSQL />,
+  'docker': <Docker />
+}
+
+export type BadgeKey = keyof typeof BadgesComponents;
+
+const BadgesList: BadgeKey[] = [
+  'html5',
+  'css',
+  'javascript',
+  'typescript',
+  'bootstrap',
+  'tailwindcss',
+  'react',
+  'python',
+  'mysql',
+  'postgresql',
+  'docker'
+];
+
+export default function Badges({ badgeList = BadgesList }: { badgeList?: BadgeKey[] }) {
   return (
-    <>
-      <HTML5 />
-      <CSS />
-      <JavaScript />
-      <TypeScript />
-      <Bootstrap />
-      <TailwindCSS />
-      <React />
-      <Python />
-      <MySQL />
-      <PostgreSQL />
-      <Docker />
-    </>
+    <div className="flex flex-wrap gap-pf-1 justify-center">
+      {
+        badgeList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
+      }
+    </div>
   )
 }
