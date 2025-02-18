@@ -94,6 +94,10 @@ const BadgesList: BadgeKey[] = [
   'docker'
 ];
 
+export function toBadgeKey(list: string[]): BadgeKey[] {
+  return list.map(item => item.toLowerCase()).filter((item): item is BadgeKey => item in BadgesComponents);
+}
+
 export default function Badges({ badgeList = BadgesList }: { badgeList?: BadgeKey[] }) {
   return (
     <div className="flex flex-wrap gap-pf-1 justify-center">
