@@ -1,3 +1,5 @@
+import { useMemo } from "react"
+
 export const HTML5 = ({ key = 'html5' }) => {
   return (
     <p key={key} className="text-white size-fit px-budget-x rounded-sm bg-[#E34F26]">HTML5</p>
@@ -98,11 +100,18 @@ export function toBadgeKey(list: string[]): BadgeKey[] {
   return list.map(item => item.toLowerCase()).filter((item): item is BadgeKey => item in BadgesComponents);
 }
 
-export default function Badges({ badgeList = BadgesList }: { badgeList?: BadgeKey[] }) {
+export default function Badges({ badgeList = BadgesList }: { badgeList?: BadgeKey[] | string[] }) {
+  const validatedList = useMemo((): BadgeKey[] => {
+    if (badgeList.every(item => typeof item === 'string')) {
+      return toBadgeKey(badgeList);
+    }
+    return toBadgeKey(badgeList as string[]);
+  }, [badgeList])
+
   return (
     <div className="flex flex-wrap gap-pf-1 justify-center">
       {
-        badgeList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
+        validatedList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
       }
     </div>
   )
