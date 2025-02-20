@@ -1,6 +1,8 @@
+import Exercises from "../components/home/Exercises"
 import KnownTechnologies from "../components/home/KnownTechnologies"
 import Projects from "../components/home/Projects"
 import SideNavBar from "../components/SideNavBar"
+import data from '../../test_data/data_example.json'
 
 export default function HomeView() {
   return (
@@ -10,17 +12,18 @@ export default function HomeView() {
           Welcome to FGamester's Portfolio
         </h1>
       </header>
-      <div className='flex gap-7'>
+      <div className='flex gap-7 sm:px-pf-4'>
         {/*Side Navigation Bar*/}
         <SideNavBar />
-        <main className='w-cont'>
+        <main className='w-3/4'>
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
             {/*Technologies*/}
             <KnownTechnologies />
             {/*Projects*/}
-            <Projects />
+            <Projects content={data.projects} />
             {/*Exercises*/}
+            <Exercises content={data.exercises} />
           </section>
           {/*About Me*/}
           <section id='about'>

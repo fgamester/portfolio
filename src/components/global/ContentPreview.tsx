@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 import { Project as ProjectType } from "../../types";
 import Badges from "./Badges";
 
-export default function ContentPreview({ item, key = 0 }: { item: ProjectType, key?: number }) {
+export default function ContentPreview({ item, category, index = 0 }: { item: ProjectType, category: string, index?: number }) {
   return (
-    <article className='flex justify-evenly flex-wrap p-pf-4 gap-pf-2 w-cont bg-pf-dark-6 rounded-2xl'>
+    <article className='flex justify-evenly flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-6 rounded-2xl'>
       <header className="w-full flex justify-between items-start">
-        <Link to={`/projects/${item.id}`} className="text-xl text-start">
+        <Link to={`/${category}/${item.id}`} className="text-xl text-start">
           {item.name}
         </Link>
         <p className="text-xs">
@@ -16,12 +16,17 @@ export default function ContentPreview({ item, key = 0 }: { item: ProjectType, k
       <div>
         <Badges badgeList={item.tags} />
       </div>
-      <div className={`flex ${key % 2 !== 0 && 'flex-row-reverse'} gap-pf-2 w-full`}>
+      <div className={`flex ${index % 2 !== 0 && 'flex-row-reverse'} gap-pf-2 w-full`}>
         <p className="text-justify text-base w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl w-1/2">
           {
-            item.image.src ? <img className="object-cover w-full h-full" src={item.image.src} alt={item.image.alt} />
-              : <img className="" src='default_image.svg' alt={item.image.alt} />
+            item.image ?
+              <img className="object-cover w-full h-full" src={item.image} alt={`${item.name}_image`} />
+              :
+              <div className="flex flex-col justify-center items-center">
+                <img className="" src='default_image.svg' alt='default_image' />
+                <p className="text-black text-xl text-center">Image Not Found</p>
+              </div>
           }
         </div>
       </div>
@@ -29,11 +34,11 @@ export default function ContentPreview({ item, key = 0 }: { item: ProjectType, k
   )
 }
 
-export function HomeContentPreview({ item, key = 0 }: { item: ProjectType, key?: number }) {
+export function HomeContentPreview({ item, category, index = 0 }: { item: ProjectType, category: string, index?: number }) {
   return (
-    <div className='flex justify-start flex-wrap p-pf-4 gap-pf-2 w-cont bg-pf-dark-6 rounded-2xl'>
+    <div className='flex justify-start flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-6 rounded-2xl'>
       <header className="w-full flex justify-between items-start">
-        <Link to={`/projects/${item.id}`} className="text-xl text-start">
+        <Link to={`/${category}/${item.id}`} className="text-xl text-start">
           {item.name}
         </Link>
         <p className="text-xs">
@@ -43,12 +48,17 @@ export function HomeContentPreview({ item, key = 0 }: { item: ProjectType, key?:
       <div>
         <Badges badgeList={item.tags} />
       </div>
-      <div className={`flex ${key % 2 !== 0 && 'flex-row-reverse'} gap-pf-2 w-full`}>
+      <div className={`flex ${index % 2 !== 0 && 'flex-row-reverse'} gap-pf-2 w-full`}>
         <p className="text-justify text-base w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl w-1/2">
           {
-            item.image.src ? <img className="object-cover w-full h-full" src={item.image.src} alt={item.image.alt} />
-              : <img className="" src='default_image.svg' alt={item.image.alt} />
+            item.image ?
+              <img className="object-cover w-full h-full" src={item.image} alt={`${item.name}_image`} />
+              :
+              <div className="flex flex-col justify-center items-center">
+                <img className="" src='default_image.svg' alt='default_image' />
+                <p className="text-black text-xl text-center">Image Not Found</p>
+              </div>
           }
         </div>
       </div>

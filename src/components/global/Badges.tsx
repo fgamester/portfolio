@@ -109,7 +109,7 @@ export default function Badges({ badgeList = BadgesList }: { badgeList?: BadgeKe
   }, [badgeList])
 
   return (
-    <div className="flex flex-wrap gap-pf-1 justify-center">
+    <div className="flex flex-wrap gap-pf-1 justify-center w-full">
       {
         validatedList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
       }
