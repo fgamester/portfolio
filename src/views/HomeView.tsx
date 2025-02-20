@@ -19,7 +19,7 @@ export default function HomeView() {
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
             {/*Technologies*/}
-            <KnownTechnologies />
+            <KnownTechnologies technologies={data.technologies} />
             {/*Projects*/}
             <Projects content={data.projects} />
             {/*Exercises*/}
