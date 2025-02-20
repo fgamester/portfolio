@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Hello there👋🏼👋🏼👋🏼  
+This is my personal portfolio where I want to display all my projects, exercises, hobbies and more. Basically it is my blog but more formal.
 
-Currently, two official plugins are available:
+It was developed in a way that I won't need to update the code if i want to add content, this is because all the content is fetched from a Gist on GitHub. The portfolio reads that information and displays it. Obviusly, if i want to add more sections i will need to improve the project, but for adding posts, it won´t be necesary.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Used Technologies:  
+**-React:** The JavaScript library that speeds up Frontend coding unifying HTML and JavaScript through its component format.
 
-## Expanding the ESLint configuration
+**-TypeScript:** A programming language extended from JavaScript, allowing for more control over variables and data types.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**-TailwindCSS:** A CSS framework that provides a combination of classes (like Bootstrap) and custom CSS properties, with the particularity that we can compile it to create a customized stylesheet with only the necesary styles, considerably decreasing our project's weight for its deployment/production.
 
-- Configure the top-level `parserOptions` property like this:
+## You want to try it?
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+### Get the repository to your local workspace
+
+First of all you need to clone the repository :
+```bash
+$ git clone https://github.com/fgamester/portfolio.git
 ```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+Then run the packages installation command:
+```bash
+$ npm install
 ```
+And finally run the server locally with the following command:
+```bash
+$ npm run dev
+```
+The project will be running at the 5173 port by default, so you will need to type [`localhost:5173`](http://localhost:5173) on your web browser or click the marked link. If port 5173 is already in use, the command will use the next available port, such as 5174, and so on.
