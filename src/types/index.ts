@@ -3,6 +3,11 @@ export type ProjectTechnology = {
     usedFor: string
 }
 
+export type Technology = {
+    name: string,
+    src: string
+}
+
 export type Project = {
     id: string,
     name: string,
@@ -26,10 +31,7 @@ export type Data = {
         description: string,
         image?: string
     },
-    technologies: {
-        name: string,
-        usedFor: string
-    }[],
+    technologies: Technology[],
     projects: Content,
     exercises: Content
 }
