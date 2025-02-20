@@ -20,6 +20,7 @@ export default {
         }
       },
       spacing: {
+        'budget-x': '6px',
         'pf-1': '5px',
         'pf-2': '10px',
         'pf-3': '15px',
@@ -32,7 +33,7 @@ export default {
         'pf-10': '50px'
       },
       width: {
-        'cont': '390px'
+        'cont': '700px'
       }
     }
   },
