@@ -8,6 +8,12 @@ export type Technology = {
     src: string
 }
 
+export type ProjectLink = {
+    name: string,
+    link: string,
+    icon?: string
+}
+
 export type Project = {
     id: string,
     name: string,
@@ -15,7 +21,8 @@ export type Project = {
     description: string
     image?: string,
     tags: string[],
-    technologies: ProjectTechnology[]
+    technologies: ProjectTechnology[],
+    links?: ProjectLink[]
 }
 
 export type Content = {
@@ -34,4 +41,8 @@ export type Data = {
     technologies: Technology[],
     projects: Content,
     exercises: Content
+}
+
+export type ContextProps = {
+    data: Data | undefined
 }

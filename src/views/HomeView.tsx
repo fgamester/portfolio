@@ -1,10 +1,13 @@
+import { useContext } from "react";
+import { Context } from "../context/GloblalContext";
 import Exercises from "../components/home/Exercises";
 import KnownTechnologies from "../components/home/KnownTechnologies";
 import Projects from "../components/home/Projects";
 // import SideNavBar from "../components/SideNavBar";
-import data from '../../test_data/data_example.json';
 
 export default function HomeView() {
+  const { data } = useContext(Context);
+
   return (
     <div className='flex flex-col items-center gap-pf-4 pt-pf-4 text-pf-dark-1'>
       <header className=''>
@@ -19,11 +22,11 @@ export default function HomeView() {
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
             {/*Technologies*/}
-            <KnownTechnologies technologies={data.technologies} />
+            <KnownTechnologies technologies={data?.technologies} />
             {/*Projects*/}
-            <Projects content={data.projects} />
+            <Projects content={data?.projects} />
             {/*Exercises*/}
-            <Exercises content={data.exercises} />
+            <Exercises content={data?.exercises} />
           </section>
           {/*About Me*/}
           <section id='about'>
