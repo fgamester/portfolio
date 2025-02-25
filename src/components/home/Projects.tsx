@@ -23,7 +23,7 @@ export default function Projects({ content }: { content: Content | undefined }) 
             </header>
             <div>
                 {content.content.map((item, index) =>
-                    <HomeContentPreview item={item} category="exercises" index={index} key={index} />
+                    <HomeContentPreview item={item} group="projects" index={index} key={index} />
                 )
                 }
             </div>

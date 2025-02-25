@@ -23,7 +23,7 @@ export default function Exercises({ content }: { content: Content | undefined })
             </header>
             <div className="flex flex-col gap-pf-4">
                 {content.content.map((item, index) =>
-                    <HomeContentPreview item={item} category="exercises" index={index} key={index} />
+                    <HomeContentPreview item={item} group="exercises" index={index} key={index} />
                 )
                 }
             </div>
