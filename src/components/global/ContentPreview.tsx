@@ -13,10 +13,8 @@ export default function ContentPreview({ item, category, index = 0 }: { item: Pr
           {item.date}
         </p>
       </header>
-      <div>
-        <Badges badgeList={item.tags} />
-      </div>
-      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse':'md:flex-row'} md:items-start gap-pf-2 w-full`}>
+      <Badges badgeList={item.tags} />
+      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} md:items-start gap-pf-2 w-full`}>
         <p className="text-justify text-base md:w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl sm:w-3/4 md:w-1/2">
           {
@@ -45,10 +43,8 @@ export function HomeContentPreview({ item, category, index = 0 }: { item: Projec
           {item.date}
         </p>
       </header>
-      <div>
-        <Badges badgeList={item.tags} />
-      </div>
-      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse':'md:flex-row'} md:items-start gap-pf-2 w-full`}>
+      <Badges badgeList={item.tags} />
+      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} md:items-start gap-pf-2 w-full`}>
         <p className="text-justify text-base md:w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl sm:w-3/4 md:w-1/2">
           {
