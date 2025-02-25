@@ -1,4 +1,3 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { GlobalContext } from './context/GloblalContext.tsx'
 import Router from './router.tsx'
