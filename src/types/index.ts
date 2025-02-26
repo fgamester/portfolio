@@ -14,15 +14,29 @@ export type ProjectLink = {
     icon?: string
 }
 
+export type GuideSteps = {
+    name: string,
+    instructions: string,
+    image?: string
+}
+
+export type ProjectGuide = {
+    name: string,
+    description: string,
+    videoLink?: string,
+    steps: GuideSteps[]
+}
+
 export type Project = {
     id: string,
     name: string,
     date: string,
-    description: string
+    description: string,
     image?: string,
     tags: string[],
     technologies: ProjectTechnology[],
-    links?: ProjectLink[]
+    links?: ProjectLink[],
+    guides: ProjectGuide[]
 }
 
 export type Content = {
