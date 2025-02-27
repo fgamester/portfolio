@@ -19,7 +19,6 @@ function Router() {
           <Route path="/about" element={<AboutView />} />
           <Route path="/hobbies" element={<HobbiesView />} />
           <Route path="*" element={<NotFoundView />} />
-
         </Route>
       </Routes>
     </BrowserRouter>

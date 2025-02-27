@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { Context } from "../context/GloblalContext";
 
 
 export default function NavBar() {
+    const { data } = useContext(Context);
     const currentPath = useLocation().pathname;
 
     return (
@@ -11,8 +14,8 @@ export default function NavBar() {
                     <Link to='/' className="text-xl" >Home</Link>
                 </div>
                 <div className="flex items-end gap-pf-4">
-                    <Link to='/projects' className={`hover:underline underline-offset-2 ${currentPath === '/projects' && 'text-pf-dark-2 underline'}`}>Projects</Link>
-                    <Link to='/exercises' className={`hover:underline underline-offset-2 ${currentPath === '/exercises' && 'text-pf-dark-2 underline'}`}>Exercises</Link>
+                    {data?.projects?.content && data.projects.content.length > 0 && <Link to='/projects' className={`hover:underline underline-offset-2 ${currentPath === '/projects' && 'text-pf-dark-2 underline'}`}>Projects</Link>}
+                    {data?.exercises?.content && data.exercises.content.length > 0 && <Link to='/exercises' className={`hover:underline underline-offset-2 ${currentPath === '/exercises' && 'text-pf-dark-2 underline'}`}>Exercises</Link>}
                     <Link to='/about' className={`hover:underline underline-offset-2 ${currentPath === '/about' && 'text-pf-dark-2 underline'}`}>About Me</Link>
                     <Link to='/hobbies' className={`hover:underline underline-offset-2 ${currentPath === '/hobbies' && 'text-pf-dark-2 underline'}`}>My hobbies</Link>
                 </div>

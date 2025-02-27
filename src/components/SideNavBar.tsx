@@ -1,6 +1,6 @@
 export default function SideNavBar() {
     return (
-        <nav className='flex flex-col bg-pf-dark-4 p-pf-4 rounded-2xl size-fit'>
+        <nav className='flex flex-col bg-pf-dark-4 p-pf-4 rounded-2xl size-fit min-w-fit'>
             <h4 className='text-xl text-center'>
                 Content List
             </h4>

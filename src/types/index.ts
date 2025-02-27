@@ -5,7 +5,7 @@ export type ProjectTechnology = {
 
 export type Technology = {
     name: string,
-    image?: string
+    image: string
 }
 
 export type ProjectLink = {

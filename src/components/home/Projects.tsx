@@ -3,7 +3,7 @@ import { HomeContentPreview } from "../global/ContentPreview";
 import { Content } from "../../types";
 
 export default function Projects({ content }: { content: Content | undefined }) {
-    return content ? (
+    return content?.content && content.content.length > 0 ? (
         <article id="projects" className="flex flex-col gap-pf-3">
             <header className="flex justify-between items-end">
                 <div className="flex items-baseline gap-pf-2">
