@@ -16,8 +16,8 @@ export default function NavBar() {
                 <div className="flex items-end gap-pf-4">
                     {data?.projects?.content && data.projects.content.length > 0 && <Link to='/projects' className={`hover:underline underline-offset-2 ${currentPath === '/projects' && 'text-pf-dark-2 underline'}`}>Projects</Link>}
                     {data?.exercises?.content && data.exercises.content.length > 0 && <Link to='/exercises' className={`hover:underline underline-offset-2 ${currentPath === '/exercises' && 'text-pf-dark-2 underline'}`}>Exercises</Link>}
-                    <Link to='/about' className={`hover:underline underline-offset-2 ${currentPath === '/about' && 'text-pf-dark-2 underline'}`}>About Me</Link>
-                    <Link to='/hobbies' className={`hover:underline underline-offset-2 ${currentPath === '/hobbies' && 'text-pf-dark-2 underline'}`}>My hobbies</Link>
+                    {data?.about?.description && data.about.description.length > 0 && <Link to='/about' className={`hover:underline underline-offset-2 ${currentPath === '/about' && 'text-pf-dark-2 underline'}`}>About Me</Link>}
+                    {data?.hobbies && data.hobbies.length > 0 && <Link to='/hobbies' className={`hover:underline underline-offset-2 ${currentPath === '/hobbies' && 'text-pf-dark-2 underline'}`}>My hobbies</Link>}
                 </div>
             </div>
             <button className="bg-pf-dark-5 size-pf-7 rounded-full">

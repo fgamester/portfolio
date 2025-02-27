@@ -45,16 +45,29 @@ export type Content = {
     content: Project[]
 }
 
+export type Activity = {
+    name: string,
+    description: string,
+    image?: string
+}
+
+export type Hobby = {
+    name: string,
+    description: string,
+    image?: string
+}
+
 export type Data = {
     name: string,
     alias: string,
-    about: {
+    about?: {
         description: string,
         image?: string
     },
-    technologies: Technology[],
-    projects: Content,
-    exercises: Content
+    technologies?: Technology[],
+    projects?: Content,
+    exercises?: Content,
+    hobbies?: (Hobby | Activity)[]
 }
 
 export type ContextProps = {
