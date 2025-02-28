@@ -15,10 +15,10 @@ export default function HomeView() {
           Welcome to FGamester's Portfolio
         </h1>
       </header>
-      <div className='flex gap-7 w-full px-pf-2 sm:px-pf-4'>
+      <div className='flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4'>
         {/*Side Navigation Bar*/}
         <SideNavBar />
-        <main className='md:flex-grow'>
+        <main className='sm:flex-grow lg:flex-grow-0 lg:w-2/3 xl:w-1/2'>
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
             {/*Technologies*/}
@@ -36,5 +36,5 @@ export default function HomeView() {
         </main>
       </div>
     </div>
-  )
+  );
 }

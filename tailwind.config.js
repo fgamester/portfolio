@@ -30,7 +30,8 @@ export default {
         'pf-7': '35px',
         'pf-8': '40px',
         'pf-9': '45px',
-        'pf-10': '50px'
+        'pf-10': '50px',
+        'pf-sb': '70px'
       },
       width: {
         'cont': '700px'

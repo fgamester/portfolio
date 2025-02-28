@@ -5,7 +5,7 @@ import Badges from "./Badges";
 export default function ContentPreview({ item, group, index = 0 }: { item: ProjectType, group: 'projects' | 'exercises', index?: number }) {
   return (
     <article className='flex justify-evenly flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-6 rounded-2xl'>
-      <header className="w-full flex justify-between items-start">
+     <header className="w-full flex justify-between items-start">
         <Link to={`/${group}/${item.id}`} className="text-xl text-start">
           {item.name}
         </Link>
@@ -14,9 +14,9 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
         </p>
       </header>
       <Badges badgeList={item.tags} />
-      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} md:items-start gap-pf-2 w-full`}>
-        <p className="text-justify text-base md:w-1/2">{item.description}</p>
-        <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl sm:w-3/4 md:w-1/2">
+      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-start gap-pf-2 w-full`}>
+        <p className="text-justify text-base lg:w-1/2">{item.description}</p>
+        <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl md:w-3/4 lg:w-1/2">
           {
             item.image ?
               <img className="object-cover w-full h-full" src={item.image} alt={`${item.name}_image`} />
@@ -44,9 +44,9 @@ export function HomeContentPreview({ item, group, index = 0 }: { item: ProjectTy
         </p>
       </header>
       <Badges badgeList={item.tags} />
-      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} md:items-start gap-pf-2 w-full`}>
-        <p className="text-justify text-base md:w-1/2">{item.description}</p>
-        <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl sm:w-3/4 md:w-1/2">
+      <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-start gap-pf-2 w-full`}>
+        <p className="text-justify text-base lg:w-1/2">{item.description}</p>
+        <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl md:w-3/4 lg:w-1/2">
           {
             item.image ?
               <img className="object-cover w-full h-full" src={item.image} alt={`${item.name}_image`} />
