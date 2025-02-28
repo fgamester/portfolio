@@ -6,7 +6,7 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
   return (
     <article className='flex justify-evenly flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-6 rounded-2xl'>
      <header className="w-full flex justify-between items-start">
-        <Link to={`/${group}/${item.id}`} className="text-xl text-start">
+        <Link to={`/content/${group}/${item.id}`} className="text-xl text-start">
           {item.name}
         </Link>
         <p className="text-xs">
@@ -36,7 +36,7 @@ export function HomeContentPreview({ item, group, index = 0 }: { item: ProjectTy
   return (
     <div className='flex justify-start flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-6 rounded-2xl'>
       <header className="w-full flex justify-between items-start">
-        <Link to={`/${group}/${item.id}`} className="text-xl text-start">
+        <Link to={`/content/${group}/${item.id}`} className="text-xl text-start">
           {item.name}
         </Link>
         <p className="text-xs">

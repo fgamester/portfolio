@@ -6,6 +6,7 @@ import ProjectsView from "./views/ProjectsView"
 import ExercisesView from "./views/ExercisesView"
 import AboutView from "./views/AboutView"
 import HobbiesView from "./views/HobbiesView"
+import ContentView from "./views/ContentView"
 
 function Router() {
 
@@ -18,6 +19,7 @@ function Router() {
           <Route path="/exercises" element={<ExercisesView />} />
           <Route path="/about" element={<AboutView />} />
           <Route path="/hobbies" element={<HobbiesView />} />
+          <Route path="/content/:category/:id" element={<ContentView />} />
           <Route path="*" element={<NotFoundView />} />
         </Route>
       </Routes>
