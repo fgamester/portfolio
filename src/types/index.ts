@@ -73,3 +73,7 @@ export type Data = {
 export type ContextProps = {
     data: Data | undefined
 }
+
+export function isProject(item: any): item is Project {
+    return item && typeof item === 'object' && 'id' in item && 'name' in item && 'date' in item && 'description' in item && Array.isArray(item.tags) && Array.isArray(item.technologies);
+}
