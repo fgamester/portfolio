@@ -34,9 +34,9 @@ export type Project = {
     description: string,
     image?: string,
     tags: string[],
-    technologies: ProjectTechnology[],
+    technologies?: ProjectTechnology[],
     links?: ProjectLink[],
-    guides: ProjectGuide[]
+    guides?: ProjectGuide[]
 }
 
 export type Content = {
