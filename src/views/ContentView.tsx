@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
-import { Content, Data, isProject, Project, ProjectLink } from "../types";
+import { Content, Data, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
@@ -36,9 +36,9 @@ export default function ContentView() {
                         )
                     }
                 </section>
-                {
-                    post.links && <LinksSection list={post.links} />
-                }
+                {post.links && post.links.length > 0 && <LinksSection list={post.links} />}
+                {post.technologies && post.technologies.length > 0 && <TechnologiesSection list={post.technologies} />}
+                {post.guides && post.guides.length > 0 && <GuidesSection list={post.guides} />}
             </main>
         </div>
     ) : (
@@ -63,6 +63,54 @@ function LinksSection({ list }: { list: ProjectLink[] }) {
                     ))
                 }
             </div>
+        </section>
+    );
+}
+
+function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
+    return (
+        <section id="technologies" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
+            <h4 className="text-xl">
+                Technologies
+            </h4>
+            <div className="flex flex-col justify-center gap-pf-2">
+                {
+                    list.map((item, index) => (
+                        <p key={index}><b>{`${item.name}: `}</b>{item.usedFor}</p>
+                    ))
+                }
+            </div>
+        </section>
+    );
+}
+
+function GuidesSection({ list }: { list: ProjectGuide[] }) {
+    return (
+        <section id="guides">
+            {
+                list.map((item, index) => (
+                    <article key={index} className="flex flex-col w-full justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
+                        <h4 className="text-center text-xl">
+                            {`${item.name[0].toLocaleUpperCase()}${item.name.substring(1)}`}
+                        </h4>
+                        {item.videoLink && <video className="object-cover w-full h-full" src={item.videoLink} />}
+                        <p>{item.description}</p>
+                        <div className="flex flex-col gap-pf-1">
+                            {
+                                item.steps.map((step, stepIndex) => (
+                                    <div key={stepIndex} className="flex flex-col justify-center items-center">
+                                        <b>{`${step.name[0].toUpperCase()}${step.name.substring(1)}:`}</b>
+                                        <p>{`${step.instructions}`}</p>
+                                        {step.image && (
+                                            <img className="my-pf-3 lg:w-2/3" src={step.image} alt={`${step.name}_image`} />
+                                        )}
+                                    </div>
+                                ))
+                            }
+                        </div>
+                    </article>
+                ))
+            }
         </section>
     );
 }
