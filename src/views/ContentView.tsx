@@ -19,7 +19,7 @@ export default function ContentView() {
     }, [data, params])
 
     return isProject(post) ? (
-        <div className="bg-pf-dark-4 md:bg-transparent md:p-pf-4 w-full flex flex-col justify-center gap-pf-3 text-pf-dark-1">
+        <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col justify-center gap-pf-3 text-pf-dark-1">
             <header className="flex justify-center">
                 <h1 className="text-4xl">
                     {post?.name}
@@ -86,23 +86,23 @@ function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
 
 function GuidesSection({ list }: { list: ProjectGuide[] }) {
     return (
-        <section id="guides">
+        <section id="guides" className="flex flex-col gap-pf-4">
             {
                 list.map((item, index) => (
-                    <article key={index} className="flex flex-col w-full justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
-                        <h4 className="text-center text-xl">
+                    <article key={index} className="flex flex-col w-full gap-pf-3 justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
+                        <h4 className="text-center text-xl font-bold">
                             {`${item.name[0].toLocaleUpperCase()}${item.name.substring(1)}`}
                         </h4>
                         {item.videoLink && <video className="object-cover w-full h-full" src={item.videoLink} />}
                         <p>{item.description}</p>
-                        <div className="flex flex-col gap-pf-1">
+                        <div className="flex flex-col gap-pf-2">
                             {
                                 item.steps.map((step, stepIndex) => (
                                     <div key={stepIndex} className="flex flex-col justify-center items-center">
                                         <b>{`${step.name[0].toUpperCase()}${step.name.substring(1)}:`}</b>
                                         <p>{`${step.instructions}`}</p>
                                         {step.image && (
-                                            <img className="my-pf-3 lg:w-2/3" src={step.image} alt={`${step.name}_image`} />
+                                            <img className="mt-pf-2 lg:w-2/3" src={step.image} alt={`${step.name}_image`} />
                                         )}
                                     </div>
                                 ))
