@@ -1,3 +1,4 @@
+/* Project Technology */
 export type ProjectTechnology = {
     name: string,
     usedFor: string
@@ -11,11 +12,15 @@ export function isProjectTechnology(item: any): item is ProjectTechnology {
     const itemKeys = Object.keys(item);
 
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
-    const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop))
+    const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop));
+
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('usedFor' in item && typeof item.usedFor !== 'string') return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Technology */
 export type Technology = {
     name: string,
     image: string
@@ -29,11 +34,15 @@ export function isTechnology(item: any): item is Technology {
     const itemKeys = Object.keys(item);
 
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
-    const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop))
+    const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop));
+
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Project Link */
 export type ProjectLink = {
     name: string,
     link: string,
@@ -51,16 +60,21 @@ export function isProjectLink(item: any): item is ProjectLink {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('link' in item && typeof item.link !== 'string') return false;
+    if ('icon' in item && typeof item.icon !== 'string') return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
-export type GuideSteps = {
+/* Guide Steps */
+export type GuideStep = {
     name: string,
     instructions: string,
     image?: string
 }
 
-export function isGuideSteps(item: any): item is GuideSteps {
+export function isGuideStep(item: any): item is GuideStep {
     if (!item || Array.isArray(item) || typeof item !== 'object') {
         return false;
     }
@@ -71,14 +85,19 @@ export function isGuideSteps(item: any): item is GuideSteps {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('instructions' in item && typeof item.instructions !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Project Guide */
 export type ProjectGuide = {
     name: string,
     description: string,
     videoLink?: string,
-    steps: GuideSteps[]
+    steps: GuideStep[]
 }
 
 export function isProjectGuide(item: any): item is ProjectGuide {
@@ -92,9 +111,15 @@ export function isProjectGuide(item: any): item is ProjectGuide {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('videoLink' in item && typeof item.videoLink !== 'string') return false;
+    if ('steps' in item && !item.steps.every((step: GuideStep) => isGuideStep(step))) return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Project */
 export type Project = {
     id: string,
     name: string,
@@ -118,9 +143,20 @@ export function isProject(item: any): item is Project {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('id' in item && typeof item.id !== 'string') return false;
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('date' in item && typeof item.date !== 'string') return false;
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
+    if ('tags' in item && !item.tags.every((tag: string) => typeof tag === 'string')) return false;
+    if ('technologies' in item && !item.technologies.every((tech: ProjectTechnology) => isProjectTechnology(tech))) return false;
+    if ('links' in item && !item.links.every((link: ProjectTechnology) => isProjectLink(link))) return false;
+    if ('guides' in item && !item.guides.every((guide: ProjectGuide) => isProjectGuide(guide))) return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Content */
 export type Content = {
     description: string,
     info?: string,
@@ -138,9 +174,15 @@ export function isContent(item: any): item is Content {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('info' in item && typeof item.info !== 'string') return false;
+    if ('content' in item && !item.content.every((project: Project) => isProject(project))) return false;
+
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Activity */
 export type Activity = {
     name: string,
     description: string,
@@ -158,9 +200,14 @@ export function isActivity(item: any): item is Activity {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Hobby */
 export type Hobby = {
     name: string,
     description: string,
@@ -178,16 +225,42 @@ export function isHobby(item: any): item is Hobby {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* About */
+
+export type About = {
+    description: string,
+    image?: string
+}
+
+export function isAbout(item: any): item is About {
+    if (!item || Array.isArray(item) || typeof item !== 'object') {
+        return false;
+    }
+    const requiredProperties = ['description'];
+    const optionalProperties = ['image'];
+    const itemKeys = Object.keys(item);
+
+    const hasRequiredProperties = requiredProperties.every(prop => prop in item);
+    const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
+
+    if ('description' in item && typeof item.description !== 'string') return false;
+    if ('image' in item && typeof item.image !== 'string') return false;
+
+    return hasRequiredProperties && hasOnlyAllowedProperties;
+}
+
+/* Data */
 export type Data = {
     name: string,
     alias: string,
-    about?: {
-        description: string,
-        image?: string
-    },
+    about?: About,
     technologies?: Technology[],
     projects?: Content,
     exercises?: Content,
@@ -205,9 +278,18 @@ export function isData(item: any): item is Data {
     const hasRequiredProperties = requiredProperties.every(prop => prop in item);
     const hasOnlyAllowedProperties = itemKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if ('name' in item && typeof item.name !== 'string') return false;
+    if ('alias' in item && typeof item.alias !== 'string') return false;
+    if ('about' in item && !isAbout(item.about)) return false;
+    if ('technologies' in item && item.technologies.every((tech: Technology) => isTechnology(tech))) return false;
+    if ('projects' in item && !isContent(item.projects)) return false;
+    if ('exercises' in item && !isContent(item.exercises)) return false;
+    if ('hobbies' in item && !item.hobbies.every((element: Hobby | Activity) => isHobby(element) || isActivity(element))) return false;
+
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+/* Context Props */
 export type ContextProps = {
     data: Data | undefined
 }
