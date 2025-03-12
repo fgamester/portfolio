@@ -32,7 +32,7 @@ export default function ContentView() {
                     </p>
                     {
                         post.image && (
-                            <img src={post.image} alt={`${post.name}_image`} className="lg:w-1/2" />
+                            <img src={post.image} alt={`${post.name}_image`} className="lg:w-1/2 rounded-2xl" />
                         )
                     }
                 </section>
@@ -102,7 +102,7 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                                         <b>{`${step.name[0].toUpperCase()}${step.name.substring(1)}:`}</b>
                                         <p>{`${step.instructions}`}</p>
                                         {step.image && (
-                                            <img className="mt-pf-2 lg:w-2/3" src={step.image} alt={`${step.name}_image`} />
+                                            <img className="mt-pf-2 lg:w-2/3 rounded-2xl" src={step.image} alt={`${step.name}_image`} />
                                         )}
                                     </div>
                                 ))
