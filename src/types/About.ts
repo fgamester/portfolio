@@ -1,4 +1,3 @@
-/* ----------------------------------About---------------------------------- */
 export type About = {
     description: string,
     image?: string

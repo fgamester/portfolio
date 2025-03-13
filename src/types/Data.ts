@@ -4,7 +4,6 @@ import { Content, isContent } from "./Content";
 import { Hobby, isHobby } from "./Hobbie";
 import { isTechnology, Technology } from "./Technology";
 
-/* ----------------------------------Data---------------------------------- */
 export type Data = {
     name: string,
     alias: string,

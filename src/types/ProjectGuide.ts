@@ -1,6 +1,5 @@
 import { GuideStep, isGuideStep } from "./GuideStep";
 
-/* ----------------------------------Project Guide---------------------------------- */
 export type ProjectGuide = {
     name: string,
     description: string,
