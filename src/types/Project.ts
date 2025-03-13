@@ -2,7 +2,6 @@ import { isProjectGuide, ProjectGuide } from "./ProjectGuide";
 import { isProjectLink, ProjectLink } from "./ProjectLink";
 import { isProjectTechnology, ProjectTechnology } from "./ProjectTechnology";
 
-/* ----------------------------------Project---------------------------------- */
 export type Project = {
     id: string,
     name: string,

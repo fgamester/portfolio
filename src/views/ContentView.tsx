@@ -1,22 +1,35 @@
-import { useContext, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
-import { Content, Data, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import { Content, Data, filterLinks, filterTags, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
-    const { data } = useContext(Context);
+    const { data, updateState } = useContext(Context);
     const params = useParams();
+
+
+    const filterPostProps = useCallback(() => {
+        setPost(old => {
+            if (old?.tags && old.tags.length > 0) old.tags = filterTags(old.tags);
+            if (old?.links && old.links.length > 0) old.links = filterLinks(old.links);
+
+            return old;
+        })
+    }, [params]);
 
     useEffect(() => {
         if (data && params?.category && data[params.category as keyof Data]) {
             const content = data[params.category as keyof Data] as Content;
             if (content && content.content && content.content.length > 0) {
                 const found = content.content.find((item) => item.id == params.id);
-                found !== undefined && setPost(() => found);
+                if (found) {
+                    updateState && updateState(found, setPost);
+                    filterPostProps();
+                }
             }
         }
-    }, [data, params])
+    }, [data, params]);
 
     return isProject(post) ? (
         <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col justify-center gap-pf-3 text-pf-dark-1">
@@ -43,20 +56,24 @@ export default function ContentView() {
         </div>
     ) : (
         <h1 className="text-pf-dark-1 text-4xl p-pf-6 text-center">
-            The content you're trying to access doesn't exist or is incomplete
+            The content you're trying to access doesn't exist or is incomplete.
         </h1>
     );
 }
 
 function LinksSection({ list }: { list: ProjectLink[] }) {
-    return (
+    const filteredList = filterLinks(list);
+
+    console.log(filteredList);
+
+    return filteredList.length > 0 ? (
         <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
             <h4 className="text-xl">
                 Links
             </h4>
             <div className="flex flex-wrap justify-center gap-pf-2">
                 {
-                    list.map((item, index) => (
+                    filteredList.map((item, index) => (
                         <a href={item.link} key={index} target="_blank" className="py-pf-1 px-pf-2 rounded-2xl bg-pf-dark-1 text-pf-dark-6">
                             {item.name}
                         </a>
@@ -64,7 +81,7 @@ function LinksSection({ list }: { list: ProjectLink[] }) {
                 }
             </div>
         </section>
-    );
+    ) : null;
 }
 
 function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {

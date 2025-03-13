@@ -1,4 +1,3 @@
-/* ----------------------------------Guide Steps---------------------------------- */
 export type GuideStep = {
     name: string,
     instructions: string,

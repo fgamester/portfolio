@@ -1,4 +1,3 @@
-/* ----------------------------------Project Link---------------------------------- */
 export type ProjectLink = {
     name: string,
     link: string,

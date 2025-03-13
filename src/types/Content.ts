@@ -1,6 +1,5 @@
 import { isProject, Project } from "./Project";
 
-/* ----------------------------------Content---------------------------------- */
 export type Content = {
     description: string,
     info?: string,

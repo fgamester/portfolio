@@ -1,4 +1,3 @@
-/* ----------------------------------Project Technology---------------------------------- */
 export type ProjectTechnology = {
     name: string,
     usedFor: string
