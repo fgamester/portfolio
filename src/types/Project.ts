@@ -47,9 +47,6 @@ export function filterLinks(list: any[]): ProjectLink[] {
 
 export function formatProject(obj: any): Project | null {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return null;
-
-
-
     return isProject(obj) ? obj as Project : null;
 }
 

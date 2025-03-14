@@ -4,9 +4,8 @@ export type ProjectTechnology = {
 }
 
 export function isProjectTechnology(obj: any): obj is ProjectTechnology {
-    if (!obj || Array.isArray(obj) || typeof obj !== 'object') {
-        return false;
-    }
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return false;
+
     const requiredProperties = ['name', 'usedFor'];
     const objKeys = Object.keys(obj);
 
@@ -19,3 +18,8 @@ export function isProjectTechnology(obj: any): obj is ProjectTechnology {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function filterProjectTechnologyArray(list: any[]): ProjectTechnology[] {
+    if (!Array.isArray(list)) return [];
+    const newList = list.filter(item => isProjectTechnology(item));
+    return newList;
+}

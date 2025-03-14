@@ -8,9 +8,8 @@ export type ProjectGuide = {
 }
 
 export function isProjectGuide(obj: any): obj is ProjectGuide {
-    if (!obj || Array.isArray(obj) || typeof obj !== 'object') {
-        return false;
-    }
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return false;
+
     const requiredProperties = ['name', 'description', 'steps'];
     const optionalProperties = ['videoLink'];
     const objKeys = Object.keys(obj);
@@ -24,5 +23,11 @@ export function isProjectGuide(obj: any): obj is ProjectGuide {
     if ('steps' in obj && !obj.steps.every((step: GuideStep) => isGuideStep(step))) return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
+}
+
+export function filterProjectGuideArray(list: any[]): ProjectGuide[] {
+    if (!Array.isArray(list)) return [];
+    const newList = list.filter(item => isProjectGuide(item));
+    return newList;
 }
 
