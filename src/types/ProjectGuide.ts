@@ -1,4 +1,4 @@
-import { GuideStep, isGuideStep } from "./GuideStep";
+import { GuideStep, isGuideStepArray } from "./GuideStep";
 
 export type ProjectGuide = {
     name: string,
@@ -20,14 +20,15 @@ export function isProjectGuide(obj: any): obj is ProjectGuide {
     if ('name' in obj && typeof obj.name !== 'string') return false;
     if ('description' in obj && typeof obj.description !== 'string') return false;
     if ('videoLink' in obj && typeof obj.videoLink !== 'string') return false;
-    if ('steps' in obj && !obj.steps.every((step: GuideStep) => isGuideStep(step))) return false;
+    if ('steps' in obj && !isGuideStepArray(obj.steps)) return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
-export function filterProjectGuideArray(list: any[]): ProjectGuide[] {
-    if (!Array.isArray(list)) return [];
-    const newList = list.filter(item => isProjectGuide(item));
-    return newList;
+export function filterProjectGuideArray(list: any): ProjectGuide[] {
+    return Array.isArray(list) ? list.filter(isProjectGuide) : [];
 }
 
+export function isProjectGuideArray(list: any): list is ProjectGuide[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isProjectGuide);
+}

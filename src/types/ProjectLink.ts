@@ -21,8 +21,10 @@ export function isProjectLink(obj: any): obj is ProjectLink {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
-export function filterProjectLinkArray(list: any[]): ProjectLink[] {
-    if (!Array.isArray(list)) return [];
-    const newList = list.filter(item => isProjectLink(item));
-    return newList;
+export function filterProjectLinkArray(list: any): ProjectLink[] {
+    return Array.isArray(list) ? list.filter(isProjectLink) : [];
+}
+
+export function isProjectLinkArray(list: any): list is ProjectLink[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isProjectLink);
 }

@@ -18,8 +18,11 @@ export function isProjectTechnology(obj: any): obj is ProjectTechnology {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
-export function filterProjectTechnologyArray(list: any[]): ProjectTechnology[] {
-    if (!Array.isArray(list)) return [];
-    const newList = list.filter(item => isProjectTechnology(item));
-    return newList;
+export function filterProjectTechnologyArray(list: any): ProjectTechnology[] {
+    return Array.isArray(list) ? list.filter(isProjectTechnology) : [];
+
+}
+
+export function isProjectTechnologyArray(list: any): list is ProjectTechnology[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isProjectTechnology);
 }

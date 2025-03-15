@@ -1,3 +1,11 @@
+import { Data } from '../types/Data'
+
+/* ----------------------------------Context Props---------------------------------- */
+export type ContextProps = {
+    data: Data | undefined,
+    updateState?: (newState: any, setState: (state: any) => void) => void
+}
+
 export * from '../types/About'
 export * from '../types/Activity'
 export * from '../types/Content'
@@ -9,11 +17,3 @@ export * from '../types/ProjectGuide'
 export * from '../types/ProjectLink'
 export * from '../types/ProjectTechnology'
 export * from '../types/Technology'
-
-import { Data } from '../types/Data'
-
-/* ----------------------------------Context Props---------------------------------- */
-export type ContextProps = {
-    data: Data | undefined,
-    updateState?: (newState: any, setState: (state: any) => void) => void
-}

@@ -22,3 +22,10 @@ export function isGuideStep(obj: any): obj is GuideStep {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function filterGuideStepArray(list: any): GuideStep[] {
+    return Array.isArray(list) ? list.filter(isGuideStep) : [];
+}
+
+export function isGuideStepArray(list: any): list is GuideStep[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isGuideStep);
+}

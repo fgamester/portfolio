@@ -1,6 +1,6 @@
-import { isProjectGuide, ProjectGuide } from "./ProjectGuide";
-import { isProjectLink, ProjectLink } from "./ProjectLink";
-import { isProjectTechnology, ProjectTechnology } from "./ProjectTechnology";
+import { isProjectGuideArray, ProjectGuide } from "./ProjectGuide";
+import { isProjectLinkArray, ProjectLink } from "./ProjectLink";
+import { isProjectTechnologyArray, ProjectTechnology } from "./ProjectTechnology";
 
 export type Project = {
     id: string,
@@ -30,9 +30,9 @@ export function isProject(obj: any): obj is Project {
     if ('description' in obj && typeof obj.description !== 'string') return false;
     if ('image' in obj && typeof obj.image !== 'string') return false;
     if ('tags' in obj && !obj.tags.every((tag: any) => typeof tag === 'string')) return false;
-    if ('technologies' in obj && !obj.technologies.every((tech: ProjectTechnology) => isProjectTechnology(tech))) return false;
-    if ('links' in obj && !obj.links.every(isProjectLink)) return false;
-    if ('guides' in obj && !obj.guides.every(isProjectGuide)) return false;
+    if ('technologies' in obj && !isProjectTechnologyArray(obj.technologies)) return false;
+    if ('links' in obj && !isProjectLinkArray(obj.links)) return false;
+    if ('guides' in obj && !isProjectGuideArray(obj.guides)) return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
@@ -41,12 +41,7 @@ export function filterTags(list: any[]): string[] {
     return list.filter((tag: any) => typeof tag === 'string');
 }
 
-export function filterLinks(list: any[]): ProjectLink[] {
-    return list.filter(isProjectLink);
-}
-
 export function formatProject(obj: any): Project | null {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return null;
     return isProject(obj) ? obj as Project : null;
 }
-

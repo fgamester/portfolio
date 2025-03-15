@@ -19,3 +19,10 @@ export function isTechnology(obj: any): obj is Technology {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function filterTechnologyArray(list: any): Technology[] {
+    return Array.isArray(list) ? list.filter(isTechnology) : [];
+}
+
+export function isTechnologyArray(list: any): list is Technology[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isTechnology);
+}

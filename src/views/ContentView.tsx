@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
-import { Content, Data, filterLinks, filterTags, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import { Content, Data, filterProjectLinkArray, filterTags, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
@@ -12,7 +12,7 @@ export default function ContentView() {
     const filterPostProps = useCallback(() => {
         setPost(old => {
             if (old?.tags && old.tags.length > 0) old.tags = filterTags(old.tags);
-            if (old?.links && old.links.length > 0) old.links = filterLinks(old.links);
+            if (old?.links && old.links.length > 0) old.links = filterProjectLinkArray(old.links);
 
             return old;
         })
@@ -62,10 +62,8 @@ export default function ContentView() {
 }
 
 function LinksSection({ list }: { list: ProjectLink[] }) {
-    const filteredList = filterLinks(list);
-
-    console.log(filteredList);
-
+    const filteredList = filterProjectLinkArray(list);
+    
     return filteredList.length > 0 ? (
         <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
             <h4 className="text-xl">
