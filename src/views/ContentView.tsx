@@ -8,16 +8,6 @@ export default function ContentView() {
     const { data, updateState } = useContext(Context);
     const params = useParams();
 
-
-    const filterPostProps = useCallback(() => {
-        setPost(old => {
-            if (old?.tags && old.tags.length > 0) old.tags = filterTags(old.tags);
-            if (old?.links && old.links.length > 0) old.links = filterProjectLinkArray(old.links);
-
-            return old;
-        })
-    }, [params]);
-
     useEffect(() => {
         if (data && params?.category && data[params.category as keyof Data]) {
             const content = data[params.category as keyof Data] as Content;
@@ -25,7 +15,6 @@ export default function ContentView() {
                 const found = content.content.find((item) => item.id == params.id);
                 if (found) {
                     updateState && updateState(found, setPost);
-                    filterPostProps();
                 }
             }
         }

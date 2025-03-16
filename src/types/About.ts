@@ -20,3 +20,6 @@ export function isAbout(obj: any): obj is About {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function formatAbout(obj: any): About | undefined {
+    return isAbout(obj) ? obj as About : undefined;
+}

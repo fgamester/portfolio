@@ -1,6 +1,6 @@
 import { createContext, useState, ReactNode, useEffect, useCallback } from "react";
 import jsondata from '../../test_data/data_example.json';
-import { Data, ContextProps } from "../types";
+import { Data, ContextProps, formatData } from "../types";
 
 export const Context = createContext<ContextProps>({
     data: undefined,
@@ -13,7 +13,7 @@ export const GlobalContext = ({ children }: { children: ReactNode }) => {
 
 
     useEffect(() => {
-        updateState(jsondata,setData);
+        updateState(formatData(jsondata),setData);
     }, [])
 
     return (

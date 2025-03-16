@@ -1,8 +1,8 @@
-import { About, isAbout } from "./About";
+import { About, formatAbout, isAbout } from "./About";
 import { Activity, isActivity } from "./Activity";
-import { Content, isContent } from "./Content";
+import { Content, formatContent, isContent } from "./Content";
 import { Hobby, isHobby } from "./Hobbie";
-import { isTechnology, Technology } from "./Technology";
+import { filterTechnologyArray, isTechnologyArray, Technology } from "./Technology";
 
 export type Data = {
     name: string,
@@ -27,12 +27,24 @@ export function isData(obj: any): obj is Data {
 
     if ('name' in obj && typeof obj.name !== 'string') return false;
     if ('alias' in obj && typeof obj.alias !== 'string') return false;
-    if ('about' in obj && !isAbout(obj.about)) return false;
-    if ('technologies' in obj && obj.technologies.every((tech: Technology) => isTechnology(tech))) return false;
-    if ('projects' in obj && !isContent(obj.projects)) return false;
-    if ('exercises' in obj && !isContent(obj.exercises)) return false;
-    if ('hobbies' in obj && !obj.hobbies.every((item: Hobby | Activity) => isHobby(item) || isActivity(item))) return false;
+    if ('about' in obj && obj.about !== undefined && !isAbout(obj.about)) return false;
+    if ('technologies' in obj && obj.technologies !== undefined && !isTechnologyArray(obj.technologies)) return false;
+    if ('projects' in obj && obj.projects !== undefined && !isContent(obj.projects)) return false;
+    if ('exercises' in obj && obj.exercises !== undefined && !isContent(obj.exercises)) return false;
+    if ('hobbies' in obj && obj.hobbies !== undefined && !obj.hobbies.every((item: Hobby | Activity) => isHobby(item) || isActivity(item))) return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function formatData(obj: any): Data | undefined {
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
+    if (isData(obj)) return obj as Data;
+
+    if ('about' in obj) obj.about = formatAbout(obj.about);
+    if ('technologies' in obj) obj.technologies = filterTechnologyArray(obj.technologies);
+    if ('projects' in obj) obj.projects = formatContent(obj.projects);
+    if ('exercises' in obj) obj.exercises = formatContent(obj.exercises);
+    if ('hobbies' in obj) obj.hobbies = obj.hobbies.filter((item: any) => isActivity(item) || isHobby(item));
+
+    return isData(obj) ? obj as Data : undefined;
+}
