@@ -9,7 +9,7 @@ export default function HomeView() {
   const { data } = useContext(Context);
 
   return (
-    <div className='flex flex-col items-center gap-pf-4 pt-pf-4 text-pf-dark-1'>
+    <div className='flex flex-col items-center gap-pf-4 py-pf-4 text-pf-dark-1'>
       <header className=''>
         <h1 className="text-4xl text-center">
           Welcome to FGamester's Portfolio
