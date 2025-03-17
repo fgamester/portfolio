@@ -4,7 +4,7 @@ import { Content } from "../../types";
 
 export default function Exercises({ content }: { content: Content | undefined }) {
     return content?.content && content.content.length > 0 ? (
-        <article id="projects" className="flex flex-col gap-pf-3">
+        <article id="exercises" className="flex flex-col gap-pf-3">
             <header className="flex justify-between items-end">
                 <div className="flex items-baseline gap-pf-2">
                     <h3 className='text-2xl'>

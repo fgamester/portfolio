@@ -4,9 +4,7 @@ export type About = {
 }
 
 export function isAbout(obj: any): obj is About {
-    if (!obj || Array.isArray(obj) || typeof obj !== 'object') {
-        return false;
-    }
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return false;
     const requiredProperties = ['description'];
     const optionalProperties = ['image'];
     const objKeys = Object.keys(obj);

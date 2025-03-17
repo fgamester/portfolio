@@ -1,12 +1,17 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import ContentPreview from "../components/global/ContentPreview";
+import { isContent, isData, isProjectArray, Project } from "../types";
 
 export default function ProjectsView() {
+  const { data, updateState } = useContext(Context);
+  const [projectArray, setProjectArray] = useState<Project[] | undefined>();
 
-  const { data } = useContext(Context);
+  useEffect(() => {
+    if (isData(data) && isContent(data.projects) && updateState) updateState(data.projects.content, setProjectArray);
+  }, [data?.projects]);
 
-  return data?.projects?.content.length && data?.projects?.content.length > 0 ? (
+  return isProjectArray(projectArray) ? (
     <div className="flex flex-col items-center sm:px-pf-3 gap-pf-4 py-pf-4 text-pf-dark-1 lg:w-2/3 xl:w-1/2">
       <header>
         <h1 className="text-4xl text-center">
@@ -14,7 +19,7 @@ export default function ProjectsView() {
         </h1>
       </header>
       <main className="flex flex-col gap-pf-4">
-        {data?.projects.content.map((item, index) => <ContentPreview item={item} key={index} index={index} group="projects" />)}
+        {projectArray.map((item, index) => <ContentPreview item={item} key={index} index={index} group="projects" />)}
       </main>
     </div>
   ) : (

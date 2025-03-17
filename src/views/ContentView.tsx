@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
 import { Content, Data, filterProjectLinkArray, filterTags, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
@@ -28,7 +28,7 @@ export default function ContentView() {
                 </h1>
             </header>
             <main className="flex flex-col gap-pf-4">
-                <section id="info" className="w-full flex flex-col md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row">
+                <section id="info" className="w-full flex flex-col gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row">
                     <p>
                         {post?.description}
                     </p>
@@ -52,7 +52,7 @@ export default function ContentView() {
 
 function LinksSection({ list }: { list: ProjectLink[] }) {
     const filteredList = filterProjectLinkArray(list);
-    
+
     return filteredList.length > 0 ? (
         <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
             <h4 className="text-xl">
