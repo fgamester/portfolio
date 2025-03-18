@@ -6,7 +6,7 @@ export default function SideNavBar() {
     const { updateState } = useContext(Context);
 
     return (
-        <div className={`fixed left-0 top-[50px] transition-transform ${collapsed && 'translate-x-[-200px]'} lg:relative`}>
+        <div className={`fixed left-0 top-[50px] transition-transform ${collapsed && 'translate-x-[-200px]'} lg:relative lg:translate-x-0`}>
             <button onClick={() => updateState && updateState(!collapsed, setCollapsed)} className={`absolute left-[175px] flex justify-end items-center bg-pf-dark-6 aspect-square w-[65px] px-pf-3 rounded-[25px] h-pf-10 py-pf-2 lg:hidden`}>
                 {collapsed ? '>' : '<'}
             </button>
