@@ -20,9 +20,10 @@ export default function NavBar() {
                     {data?.hobbies && data.hobbies.length > 0 && <Link to='/hobbies' className={`hover:underline underline-offset-2 ${currentPath === '/hobbies' && 'text-pf-dark-2 underline'}`}>My hobbies</Link>}
                 </div>
             </div>
-            <button className="bg-pf-dark-5 size-pf-7 rounded-full">
+            { /* (<button className="bg-pf-dark-5 size-pf-7 rounded-full">
                 O
-            </button>
+            </button>)
+             */}
         </nav>
     )
 }
