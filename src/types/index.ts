@@ -3,7 +3,8 @@ import { Data } from '../types/Data'
 /* ----------------------------------Context Props---------------------------------- */
 export type ContextProps = {
     data: Data | undefined,
-    updateState?: (newState: any, setState: (state: any) => void) => void
+    updateState?: (newState: any, setState: (state: any) => void) => void,
+    globalLoading: boolean
 }
 
 export * from '../types/About'
