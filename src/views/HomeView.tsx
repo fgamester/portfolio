@@ -4,11 +4,12 @@ import Exercises from "../components/home/Exercises";
 import KnownTechnologies from "../components/home/KnownTechnologies";
 import Projects from "../components/home/Projects";
 import SideNavBar from "../components/SideNavBar";
+import { isData } from "../types";
 
 export default function HomeView() {
   const { data } = useContext(Context);
 
-  return (
+  return isData(data) ? (
     <div className='flex flex-col items-center gap-pf-4 py-pf-4 text-pf-dark-1'>
       <header className=''>
         <h1 className="text-4xl text-center">
@@ -36,5 +37,17 @@ export default function HomeView() {
         </main>
       </div>
     </div>
+  ) : (
+    <main className="text-pf-dark-1 flex flex-col items-center justify-center gap-pf-4 px-pf-4">
+      <h1 className="text-5xl text-center white">
+        {'There was a problem loading the information '}
+        <span className="whitespace-nowrap">
+          {':('}
+        </span>
+      </h1>
+      <h1 className="text-5xl">
+        Please try later
+      </h1>
+    </main>
   );
 }
