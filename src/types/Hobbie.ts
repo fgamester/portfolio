@@ -15,9 +15,9 @@ export function isHobby(obj: any): obj is Hobby {
     const hasRequiredProperties = requiredProperties.every(prop => prop in obj);
     const hasOnlyAllowedProperties = objKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
-    if ('name' in obj && typeof obj.name !== 'string') return false;
-    if ('description' in obj && typeof obj.description !== 'string') return false;
-    if ('image' in obj && typeof obj.image !== 'string') return false;
+    if (typeof obj?.name !== 'string') return false;
+    if (typeof obj?.description !== 'string') return false;
+    if (typeof obj?.image !== 'string') return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }

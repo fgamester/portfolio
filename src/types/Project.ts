@@ -24,12 +24,12 @@ export function isProject(obj: any): obj is Project {
     const hasRequiredProperties = requiredProperties.every(prop => prop in obj);
     const hasOnlyAllowedProperties = objKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
-    if ('id' in obj && typeof obj.id !== 'string') return false;
-    if ('name' in obj && typeof obj.name !== 'string') return false;
-    if ('date' in obj && typeof obj.date !== 'string') return false;
-    if ('description' in obj && typeof obj.description !== 'string') return false;
+    if (typeof obj.id !== 'string') return false;
+    if (typeof obj.name !== 'string') return false;
+    if (typeof obj.date !== 'string') return false;
+    if (typeof obj.description !== 'string') return false;
     if ('image' in obj && typeof obj.image !== 'string') return false;
-    if ('tags' in obj && !obj.tags.every((tag: any) => typeof tag === 'string')) return false;
+    if (!obj?.tags?.every((tag: any) => typeof tag === 'string')) return false;
     if ('technologies' in obj && !isProjectTechnologyArray(obj.technologies)) return false;
     if ('links' in obj && !isProjectLinkArray(obj.links)) return false;
     if ('guides' in obj && !isProjectGuideArray(obj.guides)) return false;
