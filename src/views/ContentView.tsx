@@ -22,7 +22,7 @@ export default function ContentView() {
     }, [data, params]);
 
     return isProject(post) ? (
-        <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col justify-center gap-pf-3 text-pf-dark-1">
+        <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col gap-pf-3 text-pf-dark-1">
             <header className="flex justify-center">
                 <h1 className="text-4xl">
                     {post?.name}
