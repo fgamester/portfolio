@@ -1,7 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
-import { Content, Data, filterProjectLinkArray, filterTags, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import { Content, Data, filterProjectLinkArray, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import NotFoundView from "./NotFoundView";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
@@ -14,7 +15,7 @@ export default function ContentView() {
             if (content && content.content && content.content.length > 0) {
                 const found = content.content.find((item) => item.id == params.id);
                 if (found) {
-                    updateState && updateState(found, setPost);
+                    updateState(found, setPost);
                 }
             }
         }
@@ -43,11 +44,7 @@ export default function ContentView() {
                 {post.guides && post.guides.length > 0 && <GuidesSection list={post.guides} />}
             </main>
         </div>
-    ) : (
-        <h1 className="text-pf-dark-1 text-4xl p-pf-6 text-center">
-            The content you're trying to access doesn't exist or is incomplete.
-        </h1>
-    );
+    ) : <NotFoundView />;
 }
 
 function LinksSection({ list }: { list: ProjectLink[] }) {

@@ -2,13 +2,14 @@ import { useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import ContentPreview from "../components/global/ContentPreview";
 import { isContent, isData, isProjectArray, Project } from "../types";
+import NotFoundView from "./NotFoundView";
 
 export default function ProjectsView() {
   const { data, updateState } = useContext(Context);
   const [projectArray, setProjectArray] = useState<Project[] | undefined>();
 
   useEffect(() => {
-    if (isData(data) && isContent(data.exercises) && updateState) updateState(data.exercises.content, setProjectArray);
+    if (isData(data) && isContent(data.exercises)) updateState(data.exercises.content, setProjectArray);
   }, [data?.exercises]);
 
 
@@ -23,9 +24,5 @@ export default function ProjectsView() {
         {projectArray.map((item, index) => <ContentPreview item={item} key={index} index={index} group="exercises" />)}
       </main>
     </div>
-  ) : (
-    <div className="flex flex-col items-center sm:p-pf-3 gap-pf-4 pt-pf-4 text-pf-dark-1">
-      <p>{"There's no content yet :("}</p>
-    </div>
-  );
+  ) : <NotFoundView />;
 }
