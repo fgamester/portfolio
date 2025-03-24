@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Project as ProjectType } from "../../types";
-import Badges from "./Badges";
+import Badges from "./TagBadges";
+import TagBadges from "./TagBadges";
 
 export default function ContentPreview({ item, group, index = 0 }: { item: ProjectType, group: 'projects' | 'exercises', index?: number }) {
   return (
@@ -13,7 +14,7 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
           {item.date}
         </p>
       </header>
-      <Badges badgeList={item.tags} />
+      <TagBadges badgeList={item.tags} />
       <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-start gap-pf-2 w-full`}>
         <p className="text-justify text-base lg:w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl md:w-3/4 lg:w-1/2">
@@ -42,7 +43,7 @@ export function HomeContentPreview({ item, group, index = 0 }: { item: ProjectTy
           {item.date}
         </p>
       </header>
-      <Badges badgeList={item.tags} />
+      <TagBadges badgeList={item.tags} />
       <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-start gap-pf-2 w-full`}>
         <p className="text-justify text-base lg:w-1/2">{item.description}</p>
         <div className="flex justify-center items-center aspect-video overflow-hidden bg-pf-dark-2 rounded-xl md:w-3/4 lg:w-1/2">
