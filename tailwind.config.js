@@ -20,7 +20,7 @@ export default {
         }
       },
       spacing: {
-        'budget-x': '6px',
+        'tagbadge-x': '6px',
         'pf-1': '5px',
         'pf-2': '10px',
         'pf-3': '15px',
