@@ -48,7 +48,7 @@ export default function AboutView() {
 
 function CurrentWorkSection({ paragraph }: { paragraph: string }) {
   return (
-    <section id="workingon" className="flex flex-col lg:flex-row md:bg-pf-dark-4 p-pf-3 rounded-2xl">
+    <section id="working-on" className="flex flex-col md:bg-pf-dark-4 p-pf-3 rounded-2xl">
       <h4 className="text-xl text-center">
         ¿En qué estoy trabajando actualmente?
       </h4>
@@ -61,14 +61,14 @@ function CurrentWorkSection({ paragraph }: { paragraph: string }) {
 
 function ContactInfoSection({ contactList }: { contactList: ContactInfo[] }) {
   return (
-    <section id="workingon" className="flex flex-col gap-pf-2 lg:flex-row md:bg-pf-dark-4 p-pf-3 rounded-2xl">
+    <section id="contact-info" className="flex flex-col gap-pf-2 md:bg-pf-dark-4 p-pf-3 rounded-2xl">
       <h4 className="text-xl text-center">
         Canales de contacto
       </h4>
       <div className="flex justify-evenly flex-wrap gap-pf-2">
         {
           contactList.map((item, index) => (
-            <ContactBadges label={item.label} key={index} {...item.link && { linkTo: item.link }} />
+            <ContactBadges label={item.label} key={index} {...item.link && { linkTo: item.link }} {...item.icon && { icon: item.icon }} />
           ))
         }
       </div>

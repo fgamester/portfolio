@@ -106,7 +106,7 @@ export default function TagBadges({ badgeList = BadgesList }: { badgeList?: Badg
       return toBadgeKey(badgeList);
     }
     return toBadgeKey(badgeList as string[]);
-  }, [badgeList])
+  }, [badgeList]);
 
   return (
     <div className="flex flex-wrap gap-pf-1 justify-center w-full">
@@ -114,5 +114,5 @@ export default function TagBadges({ badgeList = BadgesList }: { badgeList?: Badg
         validatedList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
       }
     </div>
-  )
+  );
 }
