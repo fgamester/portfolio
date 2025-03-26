@@ -3,8 +3,8 @@ import { Context } from "../context/GloblalContext";
 import Exercises from "../components/home/Exercises";
 import KnownTechnologies from "../components/home/KnownTechnologies";
 import Projects from "../components/home/Projects";
-import SideNavBar from "../components/SideNavBar";
 import { isData } from "../types";
+import HomeSideNavBar from "../components/home/HomeSideNavBar";
 
 export default function HomeView() {
   const { data } = useContext(Context);
@@ -18,7 +18,7 @@ export default function HomeView() {
       </header>
       <div className='flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4'>
         {/*Side Navigation Bar*/}
-        <SideNavBar />
+        <HomeSideNavBar />
         <main className='sm:flex-grow lg:flex-grow-0 lg:w-2/3 xl:w-1/2'>
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
