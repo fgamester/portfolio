@@ -1,8 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import { useParams } from "react-router-dom";
 import { Content, Data, filterProjectLinkArray, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
 import NotFoundView from "./NotFoundView";
+import ContentSideNavBar from "../components/content/ContentSideNavBar";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
@@ -28,30 +29,33 @@ export default function ContentView() {
                     {post?.name}
                 </h1>
             </header>
-            <main className="flex flex-col gap-pf-4">
-                <section id="info" className="w-full flex flex-col gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row">
-                    <p>
-                        {post?.description}
-                    </p>
-                    {
-                        post.image && (
-                            <img src={post.image} alt={`${post.name}_image`} className="lg:w-1/2 rounded-2xl" />
-                        )
-                    }
-                </section>
-                {post.links && post.links.length > 0 && <LinksSection list={post.links} />}
-                {post.technologies && post.technologies.length > 0 && <TechnologiesSection list={post.technologies} />}
-                {post.guides && post.guides.length > 0 && <GuidesSection list={post.guides} />}
-            </main>
+            <div className="flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4">
+                <ContentSideNavBar postData={post} />
+                <main className="flex flex-col gap-pf-4 sm:flex-grow xl:flex-grow-0 xl:w-2/3">
+                    <section id="info" className="w-full flex flex-col gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row scroll-mt-[60px]">
+                        <p>
+                            {post?.description}
+                        </p>
+                        {
+                            post.image && (
+                                <img src={post.image} alt={`${post.name}_image`} className="lg:w-1/2 rounded-2xl" />
+                            )
+                        }
+                    </section>
+                    {post.links && post.links.length > 0 && <LinksSection list={post.links} />}
+                    {post.technologies && post.technologies.length > 0 && <TechnologiesSection list={post.technologies} />}
+                    {post.guides && post.guides.length > 0 && <GuidesSection list={post.guides} />}
+                </main>
+            </div>
         </div>
     ) : <NotFoundView />;
 }
 
 function LinksSection({ list }: { list: ProjectLink[] }) {
-    const filteredList = filterProjectLinkArray(list);
+    const filteredList = useMemo(() => filterProjectLinkArray(list), [list]);
 
     return filteredList.length > 0 ? (
-        <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
+        <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl scroll-mt-[60px]">
             <h4 className="text-xl">
                 Links
             </h4>
@@ -70,7 +74,7 @@ function LinksSection({ list }: { list: ProjectLink[] }) {
 
 function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
     return (
-        <section id="technologies" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl">
+        <section id="technologies" className="w-full flex flex-col justify-center items-center gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl scroll-mt-[60px]">
             <h4 className="text-xl">
                 Technologies
             </h4>
@@ -87,7 +91,7 @@ function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
 
 function GuidesSection({ list }: { list: ProjectGuide[] }) {
     return (
-        <section id="guides" className="flex flex-col gap-pf-4">
+        <section id="guides" className="flex flex-col gap-pf-4 scroll-mt-[60px]">
             {
                 list.map((item, index) => (
                     <article key={index} className="flex flex-col w-full gap-pf-3 justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
