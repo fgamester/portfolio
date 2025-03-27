@@ -1,6 +1,7 @@
 import { About, formatAbout, isAbout } from "./About";
 import { Activity, isActivity } from "./Activity";
 import { Content, formatContent, isContent } from "./Content";
+import { Featured, isFeatured } from "./Featured";
 import { Hobby, isHobby } from "./Hobbie";
 import { filterTechnologyArray, isTechnologyArray, Technology } from "./Technology";
 
@@ -8,6 +9,7 @@ export type Data = {
     name: string,
     alias: string,
     about?: About,
+    featured: Featured,
     technologies?: Technology[],
     projects?: Content,
     exercises?: Content,
@@ -18,7 +20,7 @@ export function isData(obj: any): obj is Data {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') {
         return false;
     }
-    const requiredProperties = ['name', 'alias'];
+    const requiredProperties = ['name', 'alias', 'featured'];
     const optionalProperties = ['about', 'technologies', 'projects', 'exercises', 'hobbies'];
     const objKeys = Object.keys(obj);
 
@@ -29,6 +31,7 @@ export function isData(obj: any): obj is Data {
     if ('alias' in obj && typeof obj.alias !== 'string') return false;
     if ('about' in obj && obj.about !== undefined && !isAbout(obj.about)) return false;
     if ('technologies' in obj && obj.technologies !== undefined && !isTechnologyArray(obj.technologies)) return false;
+    if (!isFeatured(obj.featured)) return false;
     if ('projects' in obj && obj.projects !== undefined && !isContent(obj.projects)) return false;
     if ('exercises' in obj && obj.exercises !== undefined && !isContent(obj.exercises)) return false;
     if ('hobbies' in obj && obj.hobbies !== undefined && !obj.hobbies.every((item: Hobby | Activity) => isHobby(item) || isActivity(item))) return false;
