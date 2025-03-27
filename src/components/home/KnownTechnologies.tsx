@@ -1,7 +1,7 @@
 import { Technology } from "../../types";
 
-export default function KnownTechnologies({ technologies }: { technologies: Technology[] | undefined }) {
-    return technologies ? (
+export default function KnownTechnologies({ technologies }: { technologies: Technology[] }) {
+    return (
         <article id='technologies' className='flex flex-col gap-pf-3'>
             <header>
                 <h3 className='text-2xl'>Known Technologies</h3>
@@ -14,5 +14,5 @@ export default function KnownTechnologies({ technologies }: { technologies: Tech
                 })}
             </div>
         </article>
-    ) : null;
+    );
 }

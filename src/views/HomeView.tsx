@@ -1,38 +1,70 @@
-import { useContext, useState } from "react";
+import { isProjectArray, Project, Featured, isFeatured, isTechnologyArray, isContactInfoArray } from "../types";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
-import Exercises from "../components/home/Exercises";
 import KnownTechnologies from "../components/home/KnownTechnologies";
-import Projects from "../components/home/Projects";
-import { isData } from "../types";
 import HomeSideNavBar from "../components/home/HomeSideNavBar";
+import LoadingSpinner from "../components/global/LoadingSpinner";
+import FeaturedProjects from "../components/home/FeaturedProjects";
+import FeaturedExercises from "../components/home/FeaturedExercises";
+import FeaturedAboutSection from "../components/home/FeaturedAboutSection";
+import { ContactInfoSection } from "../components/global/ContactInfoSection";
 
 export default function HomeView() {
-  const { data } = useContext(Context);
+  const { data, updateState, globalLoading } = useContext(Context);
+  const [featured, setFeatured] = useState<Featured | undefined>(undefined);
+  const [projects, setProjects] = useState<Project[] | undefined>(undefined);
+  const [exercises, setExercises] = useState<Project[] | undefined>(undefined);
+  const [localLoading, setLocalLoading] = useState<boolean>(true);
 
-  return isData(data) ? (
+  const setLocalData = useCallback(() => {
+    if (isFeatured(data?.featured)) updateState(data?.featured, setFeatured);
+    const projectList = data?.projects?.content.filter(item => data?.featured?.projects?.includes(item.id));
+    updateState(projectList, setProjects);
+    const exercisesList = data?.exercises?.content.filter(item => data?.featured?.exercises?.includes(item.id));
+    updateState(exercisesList, setExercises);
+
+    setTimeout(() => updateState(false, setLocalLoading), 300);
+  }, [data])
+
+
+  useEffect(() => {
+    setLocalData()
+  }, [data]);
+
+  if (localLoading || globalLoading) return <LoadingSpinner />;
+
+  return isFeatured(featured) ? (
     <div className='flex flex-col items-center gap-pf-4 py-pf-4 text-pf-dark-1'>
       <header className=''>
         <h1 className="text-4xl text-center">
-          Welcome to FGamester's Portfolio
+          {`Bienvenidos al Portafolio de ${featured.about.name}`}
         </h1>
       </header>
       <div className='flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4'>
         {/*Side Navigation Bar*/}
         <HomeSideNavBar />
-        <main className='sm:flex-grow lg:flex-grow-0 lg:w-2/3 xl:w-1/2'>
+        <main className='sm:flex-grow lg:flex-grow-0 lg:w-2/3 xl:w-1/2 flex flex-col gap-pf-4'>
           {/*Featured*/}
           <section id='featured' className="flex flex-col gap-pf-3">
-            {/*Technologies*/}
-            <KnownTechnologies technologies={data?.technologies} />
-            {/*Projects*/}
-            <Projects content={data?.projects} />
-            {/*Exercises*/}
-            <Exercises content={data?.exercises} />
+            {/*Technologies*/
+              isTechnologyArray(featured.technologies) && <KnownTechnologies technologies={featured.technologies} />
+            }
+            {/*Projects*/
+              isProjectArray(projects) && <FeaturedProjects contentList={projects} {...data?.projects?.info && { info: data?.projects?.info }} />
+            }
+            {/*Exercises*/
+              isProjectArray(exercises) && <FeaturedExercises contentList={exercises} {...data?.projects?.info && { info: data?.projects?.info }} />
+            }
           </section>
           {/*About Me*/}
           <section id='about'>
             {/*Who I am*/}
-            {/*Contact*/}
+            <FeaturedAboutSection description={featured.about.description} name={featured.about.name} {...featured.about.image && { image: featured.about.image }} />
+            {/*Contact*/
+              isContactInfoArray(featured.about.contact) && (
+                <ContactInfoSection contactList={featured.about.contact} />
+              )
+            }
           </section>
         </main>
       </div>

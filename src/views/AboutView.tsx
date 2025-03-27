@@ -1,10 +1,10 @@
+import { About, isAbout, isData, isContactInfoArray } from "../types";
 import { useCallback, useContext, useEffect, useState } from "react"
 import { Context } from "../context/GloblalContext"
-import { About, isAbout, isData } from "../types";
 import NotFoundView from "./NotFoundView";
-import { ContactInfo, isContactInfoArray } from "../types/ContactInfo";
 import ContactBadges from "../components/global/ContactBadges";
 import LoadingSpinner from "../components/global/LoadingSpinner";
+import { ContactInfoSection } from "../components/global/ContactInfoSection";
 
 export default function AboutView() {
   const { data, updateState, globalLoading } = useContext(Context);
@@ -64,23 +64,6 @@ function CurrentWorkSection({ paragraph }: { paragraph: string }) {
       <p>
         {paragraph}
       </p>
-    </section>
-  );
-}
-
-function ContactInfoSection({ contactList }: { contactList: ContactInfo[] }) {
-  return (
-    <section id="contact-info" className="flex flex-col gap-pf-2 md:bg-pf-dark-4 p-pf-3 rounded-2xl">
-      <h4 className="text-xl text-center">
-        Canales de contacto
-      </h4>
-      <div className="flex justify-evenly flex-wrap gap-pf-2">
-        {
-          contactList.map((item, index) => (
-            <ContactBadges label={item.label} key={index} {...item.link && { linkTo: item.link }} {...item.icon && { icon: item.icon }} />
-          ))
-        }
-      </div>
     </section>
   );
 }
