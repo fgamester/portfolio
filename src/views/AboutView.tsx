@@ -1,17 +1,26 @@
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { Context } from "../context/GloblalContext"
 import { About, isAbout, isData } from "../types";
 import NotFoundView from "./NotFoundView";
 import { ContactInfo, isContactInfoArray } from "../types/ContactInfo";
 import ContactBadges from "../components/global/ContactBadges";
+import LoadingSpinner from "../components/global/LoadingSpinner";
 
 export default function AboutView() {
-  const { data, updateState } = useContext(Context);
+  const { data, updateState, globalLoading } = useContext(Context);
   const [about, setAbout] = useState<About | undefined>(undefined);
+  const [localLoading, setLocalLoading] = useState<boolean>(true);
+
+  const setLocalStates = useCallback(() => {
+    if (isData(data)) updateState(data.about, setAbout);
+    setTimeout(() => updateState(false, setLocalLoading), 300);
+  }, [data]);
 
   useEffect(() => {
-    if (isData(data)) updateState(data.about, setAbout);
-  }, [data?.about])
+    setLocalStates();
+  }, [data?.about]);
+
+  if (localLoading || globalLoading) return <LoadingSpinner />;
 
   return isAbout(about) ? (
     <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col gap-pf-3 text-pf-dark-1">

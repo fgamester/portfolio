@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Context } from "../context/GloblalContext";
 import Exercises from "../components/home/Exercises";
 import KnownTechnologies from "../components/home/KnownTechnologies";

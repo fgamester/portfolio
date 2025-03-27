@@ -9,15 +9,16 @@ export const Context = createContext<ContextProps>({
     globalLoading: true
 });
 
+const fetchUrl = {
+    data: import.meta.env.VITE_DATA_URL,
+    example: import.meta.env.VITE_DATA_EXAMPLE_URL
+};
+
 export const GlobalContext = ({ children }: { children: ReactNode }) => {
     const [data, setData] = useState<Data | undefined>(undefined);
     const [globalLoading, setGlobalLoading] = useState<boolean>(true);
 
     const fetchData = useCallback(async () => {
-        const fetchUrl = {
-            data: import.meta.env.VITE_DATA_URL,
-            example: import.meta.env.VITE_DATA_EXAMPLE_URL
-        };
         try {
             const resp = await fetch(fetchUrl.example);
             const newData = await resp.json();
@@ -26,6 +27,7 @@ export const GlobalContext = ({ children }: { children: ReactNode }) => {
             console.error(error);
             updateState(undefined, setData);
         }
+        updateState(false, setGlobalLoading);
     }, []);
 
     useEffect(() => {
