@@ -5,14 +5,7 @@ import { Context } from "../../context/GloblalContext";
 export default function HomeSideNavBar() {
     const [collapsed, setCollapsed] = useState<boolean>(true);
     const { data, updateState } = useContext(Context)
-    const [featured, setFeatured] = useState({
-        technologies: undefined,
-        projects: undefined,
-        exercises: undefined,
-        about: undefined,
-        contact: undefined
-    });
-
+    
     return (
         <div className={`fixed left-0 top-pf-10 transition-transform ${collapsed && 'translate-x-[-200px]'} lg:relative lg:translate-x-0 z-10`}>
             <button onClick={() => updateState(!collapsed, setCollapsed)} className={`absolute left-[200px] flex justify-end items-center bg-pf-dark-6 w-[40px] ${collapsed ? 'pr-pf-3' : 'pr-pf-4'} rounded-r-[25px] h-pf-10 py-pf-2 lg:hidden`}>

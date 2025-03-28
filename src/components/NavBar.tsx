@@ -8,7 +8,7 @@ export default function NavBar() {
     const currentPath = useLocation().pathname;
 
     return (
-        <nav className={`h-pf-10 px-pf-4 flex justify-between items-center bg-pf-dark-6 text-pf-dark-1 fixed top-0 left-0 right-0 z-10`}>
+        <nav className={`h-pf-10 px-pf-4 flex justify-between items-center bg-pf-dark-6 text-pf-dark-1 fixed top-0 left-0 right-0 z-20`}>
             <div className="flex gap-pf-6">
                 <div className="flex items-end">
                     <Link to='/' className="text-xl" >Home</Link>
