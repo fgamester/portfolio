@@ -13,7 +13,7 @@ export default function FeaturedProjects({ contentList, info }: { contentList: P
             <header className="flex relative justify-between items-end">
                 <div className="flex items-baseline gap-pf-2">
                     <h3 className='text-2xl'>
-                        Projects
+                        Proyectos
                     </h3>
                     {
                         info &&
@@ -32,7 +32,7 @@ export default function FeaturedProjects({ contentList, info }: { contentList: P
                     </div>
                 }
                 <Link to='/projects' className="hover:underline underline-offset-2">
-                    See more...
+                    Ver más...
                 </Link>
             </header>
             <div>

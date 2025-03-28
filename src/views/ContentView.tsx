@@ -57,7 +57,7 @@ function LinksSection({ list }: { list: ProjectLink[] }) {
     return filteredList.length > 0 ? (
         <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl scroll-mt-[60px]">
             <h4 className="text-xl">
-                Links
+                Enlaces
             </h4>
             <div className="flex flex-wrap justify-center gap-pf-2">
                 {
@@ -76,7 +76,7 @@ function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
     return (
         <section id="technologies" className="w-full flex flex-col justify-center items-center gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl scroll-mt-[60px]">
             <h4 className="text-xl">
-                Technologies
+                Tecnologías utilizadas
             </h4>
             <div className="flex flex-col justify-center gap-pf-2">
                 {

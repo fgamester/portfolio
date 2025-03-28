@@ -26,7 +26,7 @@ export default function ProjectsView() {
     <div className="flex flex-col items-center sm:px-pf-3 gap-pf-4 py-pf-4 text-pf-dark-1 lg:w-2/3 xl:w-1/2">
       <header>
         <h1 className="text-4xl text-center">
-          Projects
+          Proyectos
         </h1>
       </header>
       <main className="flex flex-col gap-pf-4">

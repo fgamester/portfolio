@@ -15,36 +15,36 @@ export default function HomeSideNavBar({ featured, projectList, exerciseList }: 
                 {(isTechnologyArray(featured.technologies) || isProjectArray(projectList) || isProjectArray(exerciseList)) && (
                     <>
                         <h4 className='text-xl text-center'>
-                            Content List
+                            Contenido
                         </h4>
-                        <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-lg' href="#featured">Featured</a>
+                        <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-lg' href="#featured">Destacados</a>
                         <ul className='flex flex-col pl-5'>
                             {isTechnologyArray(featured.technologies) && (
                                 <li className='list-disc'>
-                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#technologies">Known Technologies</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#technologies">Tecnologías conocidas</a>
                                 </li>
                             )}
                             {isProjectArray(projectList) && (
                                 <li className='list-disc'>
-                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#projects">Projects</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#projects">Proyectos</a>
                                 </li>
                             )}
                             {isProjectArray(exerciseList) && (
                                 <li className='list-disc'>
-                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#exercises">Exercises</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#exercises">Ejercicios</a>
                                 </li>
                             )}
                         </ul>
                     </>
                 )}
-                <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-lg' href="#about">About Me</a>
+                <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-lg' href="#about">Sobre mí</a>
                 <ul className='flex flex-col pl-5'>
                     <li className='list-disc'>
-                        <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#who-am-i">Who I Am</a>
+                        <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#who-am-i">¿Quién soy?</a>
                     </li>
                     {(isContactInfoArray(featured.about.contact)) && (
                         <li className='list-disc'>
-                            <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#contact-info">Contact</a>
+                            <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#contact-info">Canales de contacto</a>
                         </li>
                     )}
                 </ul>
