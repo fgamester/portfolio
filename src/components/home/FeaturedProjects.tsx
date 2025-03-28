@@ -9,7 +9,7 @@ export default function FeaturedProjects({ contentList, info }: { contentList: P
     const [showTooltip, setShowTooltip] = useState<boolean>(false);
 
     return (
-        <article id="projects" className="flex flex-col gap-pf-3">
+        <article id="projects" className="flex flex-col gap-pf-3 scroll-mt-[60px]">
             <header className="flex relative justify-between items-end">
                 <div className="flex items-baseline gap-pf-2">
                     <h3 className='text-2xl'>

@@ -42,10 +42,10 @@ export default function HomeView() {
       </header>
       <div className='flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4'>
         {/*Side Navigation Bar*/}
-        <HomeSideNavBar />
+        <HomeSideNavBar featured={featured} exerciseList={exercises} projectList={projects} />
         <main className='sm:flex-grow lg:flex-grow-0 lg:w-2/3 xl:w-1/2 flex flex-col gap-pf-4'>
           {/*Featured*/}
-          <section id='featured' className="flex flex-col gap-pf-3">
+          <section id='featured' className="flex flex-col gap-pf-3 scroll-mt-[60px]">
             {/*Technologies*/
               isTechnologyArray(featured.technologies) && <KnownTechnologies technologies={featured.technologies} />
             }
@@ -57,7 +57,7 @@ export default function HomeView() {
             }
           </section>
           {/*About Me*/}
-          <section id='about'>
+          <section id='about' className="scroll-mt-[60px]">
             {/*Who I am*/}
             <FeaturedAboutSection description={featured.about.description} name={featured.about.name} {...featured.about.image && { image: featured.about.image }} />
             {/*Contact*/

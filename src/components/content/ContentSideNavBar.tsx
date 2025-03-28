@@ -19,21 +19,21 @@ export default function ContentSideNavBar({ postData }: { postData: Project }) {
                         </h4>
                         <ul className='flex flex-col pl-5'>
                             <li className='list-disc'>
-                                <a className='hover:underline text-sm' href="#info">Descripción</a>
+                                <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#info">Descripción</a>
                             </li>
                             {postData.links && (
                                 <li className='list-disc'>
-                                    <a className='hover:underline text-sm' href="#links">Links</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#links">Links</a>
                                 </li>
                             )}
                             {isProjectTechnologyArray(postData.technologies) && (
                                 <li className='list-disc'>
-                                    <a className='hover:underline text-sm' href="#technologies">Tecnologías</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#technologies">Tecnologías</a>
                                 </li>
                             )}
                             {isProjectGuideArray(postData.guides) && (
                                 <li className='list-disc'>
-                                    <a className='hover:underline text-sm' href="#guides">Guías</a>
+                                    <a onClick={() => updateState(!collapsed, setCollapsed)} className='hover:underline text-sm' href="#guides">Guías</a>
                                 </li>
                             )}
                         </ul>
