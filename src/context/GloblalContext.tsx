@@ -2,6 +2,7 @@ import { createContext, useState, ReactNode, useEffect, useCallback } from "reac
 import { Data, ContextProps, formatData } from "../types";
 
 const updateState = (newState: any, setState: (state: any) => void) => setState(() => newState);
+const fetchUrl = import.meta.env.VITE_DATA_URL;
 
 export const Context = createContext<ContextProps>({
     data: undefined,
@@ -9,18 +10,13 @@ export const Context = createContext<ContextProps>({
     globalLoading: true
 });
 
-const fetchUrl = {
-    data: import.meta.env.VITE_DATA_URL,
-    example: import.meta.env.VITE_DATA_EXAMPLE_URL
-};
-
 export const GlobalContext = ({ children }: { children: ReactNode }) => {
     const [data, setData] = useState<Data | undefined>(undefined);
     const [globalLoading, setGlobalLoading] = useState<boolean>(true);
 
     const fetchData = useCallback(async () => {
         try {
-            const resp = await fetch(fetchUrl.example);
+            const resp = await fetch(fetchUrl);
             const newData = await resp.json();
             updateState(formatData(newData), setData);
         } catch (error) {
