@@ -1,40 +1,64 @@
-import { useContext, useEffect, useMemo, useState } from "react";
-import { Context } from "../context/GloblalContext";
+import { Content, Data, isData, isProject, isProjectGuideArray, isProjectLinkArray, isProjectTechnologyArray, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import { useContext, useEffect, useState, Fragment } from "react";
 import { useParams } from "react-router-dom";
-import { Content, Data, filterProjectLinkArray, isProject, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
+import { Context } from "../context/GloblalContext";
 import NotFoundView from "./NotFoundView";
 import ContentSideNavBar from "../components/content/ContentSideNavBar";
+import LoadingSpinner from "../components/global/LoadingSpinner";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
-    const { data, updateState } = useContext(Context);
+    const [localLoading, setLocalLoading] = useState<boolean>(true);
+    const { data, updateState, globalLoading } = useContext(Context);
     const params = useParams();
 
     useEffect(() => {
-        if (data && params?.category && data[params.category as keyof Data]) {
+        if (isData(data) && params?.category && data[params.category as keyof Data]) {
             const content = data[params.category as keyof Data] as Content;
             if (content && content.content && content.content.length > 0) {
                 const found = content.content.find((item) => item.id == params.id);
                 if (found) {
                     updateState(found, setPost);
+                    setTimeout(() => updateState(false, setLocalLoading), 300);
+                    document.title = `${found.name} - ${data.alias}`;
                 }
             }
         }
     }, [data, params]);
 
+    if (localLoading || globalLoading) return <LoadingSpinner />;
+
     return isProject(post) ? (
         <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col gap-pf-3 text-pf-dark-1">
-            <header className="flex justify-center">
-                <h1 className="text-4xl">
+            <header className="flex justify-center px-pf-4">
+                <h1 className="text-4xl text-center">
                     {post?.name}
                 </h1>
             </header>
-            <div className="flex justify-center gap-pf-4 w-full px-pf-2 sm:px-pf-4">
+            <div className="flex justify-center gap-pf-4 w-full px-pf-2 lg:px-pf-4">
                 <ContentSideNavBar postData={post} />
-                <main className="flex flex-col gap-pf-4 sm:flex-grow xl:flex-grow-0 xl:w-2/3">
+                <main className="flex flex-col gap-pf-4 flex-grow xl:flex-grow-0 xl:w-2/3">
                     <section id="info" className="w-full flex flex-col gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row scroll-mt-[60px]">
-                        <p>
-                            {post?.description}
+                        <p className="text-justify">
+                            {
+                                post?.description.split(/\n/).map((line, index, array) => (
+                                    <Fragment key={index}>
+                                        {
+                                            array.length - 1 === index ? (
+                                                <>
+                                                    {line}
+                                                </>
+                                            ) : (
+                                                <>
+                                                    {line}
+                                                    <br className="mt-pf-1" />
+                                                    <br className="mt-pf-1" />
+                                                </>
+                                            )
+                                        }
+                                    </Fragment>
+                                ))
+                            }
                         </p>
                         {
                             post.image && (
@@ -42,9 +66,9 @@ export default function ContentView() {
                             )
                         }
                     </section>
-                    {post.links && post.links.length > 0 && <LinksSection list={post.links} />}
-                    {post.technologies && post.technologies.length > 0 && <TechnologiesSection list={post.technologies} />}
-                    {post.guides && post.guides.length > 0 && <GuidesSection list={post.guides} />}
+                    {isProjectLinkArray(post.links) && <LinksSection list={post.links} />}
+                    {isProjectTechnologyArray(post.technologies) && <TechnologiesSection list={post.technologies} />}
+                    {isProjectGuideArray(post.guides) && <GuidesSection list={post.guides} />}
                 </main>
             </div>
         </div>
@@ -52,16 +76,14 @@ export default function ContentView() {
 }
 
 function LinksSection({ list }: { list: ProjectLink[] }) {
-    const filteredList = useMemo(() => filterProjectLinkArray(list), [list]);
-
-    return filteredList.length > 0 ? (
+    return (
         <section id="links" className="w-full flex flex-col justify-center items-center gap-pf-2  md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl scroll-mt-[60px]">
             <h4 className="text-xl">
                 Enlaces
             </h4>
             <div className="flex flex-wrap justify-center gap-pf-2">
                 {
-                    filteredList.map((item, index) => (
+                    list.map((item, index) => (
                         <a href={item.link} key={index} target="_blank" className="py-pf-1 px-pf-2 rounded-2xl bg-pf-dark-1 text-pf-dark-6">
                             {item.name}
                         </a>
@@ -69,7 +91,7 @@ function LinksSection({ list }: { list: ProjectLink[] }) {
                 }
             </div>
         </section>
-    ) : null;
+    );
 }
 
 function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
@@ -81,7 +103,7 @@ function TechnologiesSection({ list }: { list: ProjectTechnology[] }) {
             <div className="flex flex-col justify-center gap-pf-2">
                 {
                     list.map((item, index) => (
-                        <p key={index}><b>{`${item.name}: `}</b>{item.usedFor}</p>
+                        <p className="text-justify" key={index}><b>{`${item.name}: `}</b>{item.usedFor}</p>
                     ))
                 }
             </div>
@@ -103,9 +125,9 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                         <div className="flex flex-col gap-pf-2">
                             {
                                 item.steps.map((step, stepIndex) => (
-                                    <div key={stepIndex} className="flex flex-col justify-center items-center">
-                                        <b>{`${step.name[0].toUpperCase()}${step.name.substring(1)}:`}</b>
-                                        <p>{`${step.instructions}`}</p>
+                                    <div key={stepIndex} className="flex flex-col justify-center items-star text-justify">
+                                        <b className="self-center">{`${stepIndex + 1}. ${step.name[0].toUpperCase()}${step.name.substring(1)}`}</b>
+                                        <p className="text-justify">{`${step.instructions}`}</p>
                                         {step.image && (
                                             <img className="mt-pf-2 lg:w-2/3 rounded-2xl" src={step.image} alt={`${step.name}_image`} />
                                         )}
