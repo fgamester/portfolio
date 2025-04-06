@@ -50,10 +50,10 @@ export default function HomeView() {
               isTechnologyArray(featured.technologies) && <KnownTechnologies technologies={featured.technologies} />
             }
             {/*Projects*/
-              isProjectArray(projects) && <FeaturedProjects contentList={projects} {...data?.projects?.info && { info: data?.projects?.info }} />
+              isProjectArray(projects) && projects.length > 0 && <FeaturedProjects contentList={projects} {...data?.projects?.info && { info: data?.projects?.info }} />
             }
             {/*Exercises*/
-              isProjectArray(exercises) && <FeaturedExercises contentList={exercises} {...data?.projects?.info && { info: data?.projects?.info }} />
+              isProjectArray(exercises) && exercises.length > 0 && <FeaturedExercises contentList={exercises} {...data?.projects?.info && { info: data?.projects?.info }} />
             }
           </section>
           {/*About Me*/}
