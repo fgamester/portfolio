@@ -1,0 +1,445 @@
+{
+    "name": "John Doe",
+    "alias": "johndoe",
+    "about": {
+        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+        "contact": [
+            {
+                "label": "LinkedIn Profile",
+                "icon": "linkedin",
+                "link": "https://www.linkedin.com/"
+            },
+            {
+                "label": "Github Profile",
+                "icon": "github",
+                "link": "https://www.github.com/"
+            },
+            {
+                "label": "john.doe@example.com",
+                "icon": "email"
+            }
+        ],
+        "currentWork": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros."
+    },
+    "featured": {
+        "about": {
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+            "name": "John Doe",
+            "alias": "johndoe",
+            "contact": [
+                {
+                    "label": "LinkedIn Profile",
+                    "icon": "linkedin",
+                    "link": "https://www.linkedin.com/"
+                },
+                {
+                    "label": "Github Profile",
+                    "icon": "github",
+                    "link": "https://www.github.com/"
+                },
+                {
+                    "label": "john.doe@example.com",
+                    "icon": "email"
+                }
+            ]
+        },
+        "technologies": [
+            {
+                "name": "HTML5",
+                "image": "technologies/w3_html5-icon.svg"
+            },
+            {
+                "name": "CSS",
+                "image": "technologies/w3_css-icon~old.svg"
+            },
+            {
+                "name": "JavaScript",
+                "image": "technologies/javascript-icon.svg"
+            },
+            {
+                "name": "TypeScript",
+                "image": "technologies/typescriptlang-icon.svg"
+            },
+            {
+                "name": "Bootstrap",
+                "image": "technologies/getbootstrap-icon.svg"
+            },
+            {
+                "name": "TailwindCSS",
+                "image": "technologies/tailwindcss-icon.svg"
+            },
+            {
+                "name": "React",
+                "image": "technologies/reactjs-icon.svg"
+            },
+            {
+                "name": "Python",
+                "image": "technologies/python-icon.svg"
+            },
+            {
+                "name": "MySQL",
+                "image": "technologies/mysql-icon.svg"
+            },
+            {
+                "name": "PostgreSQL",
+                "image": "technologies/postgresql-icon.svg"
+            },
+            {
+                "name": "Docker",
+                "image": "technologies/docker-tile.svg"
+            }
+        ],
+        "projects": [
+            "example-project-1",
+            "example-project-2"
+        ],
+        "exercises": [
+            "example-exercise-1",
+            "example-exercise-2"
+        ]
+    },
+    "technologies": [
+        {
+            "name": "HTML5",
+            "image": "technologies/w3_html5-icon.svg"
+        },
+        {
+            "name": "CSS",
+            "image": "technologies/w3_css-icon~old.svg"
+        },
+        {
+            "name": "JavaScript",
+            "image": "technologies/javascript-icon.svg"
+        },
+        {
+            "name": "TypeScript",
+            "image": "technologies/typescriptlang-icon.svg"
+        },
+        {
+            "name": "Bootstrap",
+            "image": "technologies/getbootstrap-icon.svg"
+        },
+        {
+            "name": "TailwindCSS",
+            "image": "technologies/tailwindcss-icon.svg"
+        },
+        {
+            "name": "React",
+            "image": "technologies/reactjs-icon.svg"
+        },
+        {
+            "name": "Python",
+            "image": "technologies/python-icon.svg"
+        },
+        {
+            "name": "MySQL",
+            "image": "technologies/mysql-icon.svg"
+        },
+        {
+            "name": "PostgreSQL",
+            "image": "technologies/postgresql-icon.svg"
+        },
+        {
+            "name": "Docker",
+            "image": "technologies/docker-tile.svg"
+        }
+    ],
+    "projects": {
+        "description": "",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.",
+        "content": [
+            {
+                "id": "example-project-1",
+                "name": "Example Project 1",
+                "date": "04-04-2025",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                "tags": [
+                    "Express",
+                    "Node.js",
+                    "Docker"
+                ],
+                "technologies": [
+                    {
+                        "name": "Node.js",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Express",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Docker",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    }
+                ],
+                "links": [
+                    {
+                        "name": "Repository",
+                        "link": "https://github.com/",
+                        "icon": "github"
+                    }
+                ],
+                "guides": [
+                    {
+                        "name": "Guide Example",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                        "steps": [
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm clone https://github.com/no-one/example.git"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm install"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "root-directory/\n├── dist/\n│\t├── index.html\n│\t├── styles.css\n│\t├── app.js/\n│\t└── assets/\n│\t\t├── logo.png\n│\t\t└── image.jpg\n├── node_modules/\n├── .dockerignore\n├── .gitignore\n├── Dockerfile\n├── package-lock.json\n├── package.json\n├── README.es.md\n├── README.md\n└── server.js"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "node server.js"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "example-project-2",
+                "name": "Example Project 2",
+                "date": "10-03-2025",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                "tags": [
+                    "TypeScript",
+                    "React",
+                    "TailwindCSS"
+                ],
+                "technologies": [
+                    {
+                        "name": "Node.js",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Express",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Docker",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    }
+                ],
+                "links": [
+                    {
+                        "name": "Repository",
+                        "link": "https://github.com/",
+                        "icon": "github"
+                    }
+                ],
+                "guides": [
+                    {
+                        "name": "Guide Example",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                        "steps": [
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm clone https://github.com/no-one/example.git"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm install"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm run dev"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    "exercises": {
+        "description": "",
+        "info": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit.",
+        "content": [
+            {
+                "id": "example-exercise-1",
+                "name": "Example Exercise 1",
+                "date": "04-04-2025",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                "tags": [
+                    "Express",
+                    "Node.js",
+                    "Docker"
+                ],
+                "technologies": [
+                    {
+                        "name": "Node.js",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Express",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Docker",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    }
+                ],
+                "links": [
+                    {
+                        "name": "Repository",
+                        "link": "https://github.com/",
+                        "icon": "github"
+                    }
+                ],
+                "guides": [
+                    {
+                        "name": "Guide Example",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                        "steps": [
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm clone https://github.com/no-one/example.git"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm install"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "root-directory/\n├── dist/\n│\t├── index.html\n│\t├── styles.css\n│\t├── app.js/\n│\t└── assets/\n│\t\t├── logo.png\n│\t\t└── image.jpg\n├── node_modules/\n├── .dockerignore\n├── .gitignore\n├── Dockerfile\n├── package-lock.json\n├── package.json\n├── README.es.md\n├── README.md\n└── server.js"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "node server.js"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "id": "example-exercise-2",
+                "name": "Example Exercise 2",
+                "date": "10-03-2025",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. \nLorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                "tags": [
+                    "TypeScript",
+                    "React",
+                    "TailwindCSS"
+                ],
+                "technologies": [
+                    {
+                        "name": "Node.js",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Express",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    },
+                    {
+                        "name": "Docker",
+                        "usedFor": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit."
+                    }
+                ],
+                "links": [
+                    {
+                        "name": "Repository",
+                        "link": "https://github.com/",
+                        "icon": "github"
+                    }
+                ],
+                "guides": [
+                    {
+                        "name": "Guide Example",
+                        "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt est et tortor aliquet, id interdum nisi laoreet. Nulla facilisi. Maecenas sodales nec tellus eget posuere. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.",
+                        "steps": [
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm clone https://github.com/no-one/example.git"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm install"
+                                    }
+                                ]
+                            },
+                            {
+                                "name": "Step example",
+                                "instructions": [
+                                    {
+                                        "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus:",
+                                        "code": "npm run dev"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+}
