@@ -30,5 +30,5 @@ export function filterProjectGuideArray(list: any): ProjectGuide[] {
 }
 
 export function isProjectGuideArray(list: any): list is ProjectGuide[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isProjectGuide);
+    return Array.isArray(list) && (list.length > 0 && list.every(isProjectGuide)) || list.length === 0;
 }

@@ -26,5 +26,5 @@ export function filterProjectLinkArray(list: any): ProjectLink[] {
 }
 
 export function isProjectLinkArray(list: any): list is ProjectLink[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isProjectLink);
+    return Array.isArray(list) && (list.length > 0 && list.every(isProjectLink)) || list.length === 0;
 }

@@ -58,5 +58,5 @@ export function filterProjectArray(list: any): Project[] {
 }
 
 export function isProjectArray(list: any): list is Project[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isProject);
+    return Array.isArray(list) && (list.length > 0 && list.every(isProject)) || list.length === 0;
 }

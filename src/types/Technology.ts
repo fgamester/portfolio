@@ -24,5 +24,5 @@ export function filterTechnologyArray(list: any): Technology[] {
 }
 
 export function isTechnologyArray(list: any): list is Technology[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isTechnology);
+    return Array.isArray(list) && (list.length > 0 && list.every(isTechnology)) || list.length === 0;
 }

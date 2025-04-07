@@ -1,7 +1,8 @@
+import { isStepInstructionArray, StepInstruction } from "./StepInstruction";
+
 export type GuideStep = {
     name: string,
-    instructions: string,
-    image?: string
+    instructions: StepInstruction[]
 }
 
 export function isGuideStep(obj: any): obj is GuideStep {
@@ -9,15 +10,13 @@ export function isGuideStep(obj: any): obj is GuideStep {
         return false;
     }
     const requiredProperties = ['name', 'instructions'];
-    const optionalProperties = ['image'];
     const objKeys = Object.keys(obj);
 
     const hasRequiredProperties = requiredProperties.every(prop => prop in obj);
-    const hasOnlyAllowedProperties = objKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
+    const hasOnlyAllowedProperties = objKeys.every(prop => requiredProperties.includes(prop));
 
-    if ('name' in obj && typeof obj.name !== 'string') return false;
-    if ('instructions' in obj && typeof obj.instructions !== 'string') return false;
-    if ('image' in obj && typeof obj.image !== 'string') return false;
+    if (typeof obj.name !== 'string') return false;
+    if (!isStepInstructionArray(obj.instructions)) return false;
 
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
@@ -27,5 +26,5 @@ export function filterGuideStepArray(list: any): GuideStep[] {
 }
 
 export function isGuideStepArray(list: any): list is GuideStep[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isGuideStep);
+    return Array.isArray(list) && (list.length > 0 && list.every(isGuideStep)) || list.length === 0;
 }

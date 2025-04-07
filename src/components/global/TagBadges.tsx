@@ -1,88 +1,6 @@
-import { useMemo } from "react"
+import { Fragment, useMemo } from "react"
 
-export const HTML5 = ({ key = 'html5' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#E34F26]">HTML5</p>
-  )
-}
-
-export const CSS = ({ key = 'css' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#663399]">CSS</p>
-  )
-}
-
-export const JavaScript = ({ key = 'javascript' }) => {
-  return (
-    <p key={key} className="text-black size-fit px-tagbadge-x rounded-sm bg-[#F7DF1E]">JavaScript</p>
-  )
-}
-
-export const TypeScript = ({ key = 'typescript' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#3178C6]">TypeScript</p>
-  )
-}
-
-export const Bootstrap = ({ key = 'bootstrap' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#7952B3]">Bootstrap</p>
-  )
-}
-
-export const TailwindCSS = ({ key = 'tailwindcss' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#06B6D4]">TailwindCSS</p>
-  )
-}
-
-export const React = ({ key = 'react' }) => {
-  return (
-    <p key={key} className="text-black size-fit px-tagbadge-x rounded-sm bg-[#61DAFB]">React</p>
-  )
-}
-
-export const Python = ({ key = 'python' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#3776AB]">Python</p>
-  )
-}
-
-export const MySQL = ({ key = 'mysql' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#4479A1]">MySQL</p>
-  )
-}
-
-export const PostgreSQL = ({ key = 'postgresql' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#4169E1]">PostgreSQL</p>
-  )
-}
-
-export const Docker = ({ key = 'docker' }) => {
-  return (
-    <p key={key} className="text-white size-fit px-tagbadge-x rounded-sm bg-[#2496ED]">Docker</p>
-  )
-}
-
-const BadgesComponents = {
-  'html5': <HTML5 />,
-  'css': <CSS />,
-  'javascript': <JavaScript />,
-  'typescript': <TypeScript />,
-  'bootstrap': <Bootstrap />,
-  'tailwindcss': <TailwindCSS />,
-  'react': <React />,
-  'python': <Python />,
-  'mysql': <MySQL />,
-  'postgresql': <PostgreSQL />,
-  'docker': <Docker />
-}
-
-export type BadgeKey = keyof typeof BadgesComponents;
-
-const BadgesList: BadgeKey[] = [
+const commonTags = [
   'html5',
   'css',
   'javascript',
@@ -91,27 +9,39 @@ const BadgesList: BadgeKey[] = [
   'tailwindcss',
   'react',
   'python',
+  'docker',
   'mysql',
   'postgresql',
-  'docker'
-];
+  'express',
+  'nodejs',
+  'mongodb',
+  'flask',
+]
 
-export function toBadgeKey(list: string[]): BadgeKey[] {
-  return list.map(item => item.toLowerCase()).filter((item): item is BadgeKey => item in BadgesComponents);
+export const TagConstructor = ({ tag }: { tag: string }) => {
+  const lowerTag = tag.toLowerCase();
+  const isCommonTag = commonTags.includes(lowerTag);
+
+  return (
+    <p
+      className={`size-fit px-tagbadge-x rounded-sm
+        ${isCommonTag ? `bg-tags-bg-${lowerTag} text-tags-text-${lowerTag}` : 'bg-white text-black'}`}
+    >
+      {tag}
+    </p>
+  );
 }
 
-export default function TagBadges({ badgeList = BadgesList }: { badgeList?: BadgeKey[] | string[] }) {
-  const validatedList = useMemo((): BadgeKey[] => {
-    if (badgeList.every(item => typeof item === 'string')) {
-      return toBadgeKey(badgeList);
-    }
-    return toBadgeKey(badgeList as string[]);
-  }, [badgeList]);
+export default function TagBadges({ badgeList }: { badgeList: string[] }) {
 
   return (
     <div className="flex flex-wrap gap-pf-1 justify-center w-full">
       {
-        validatedList.map((item, index) => <div key={index}>{BadgesComponents[item]}</div>)
+        badgeList.map((item, index) => (
+          <Fragment key={index}>
+            <TagConstructor tag={item} />
+          </Fragment>
+        ))
       }
     </div>
   );

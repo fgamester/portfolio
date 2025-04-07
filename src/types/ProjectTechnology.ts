@@ -24,5 +24,5 @@ export function filterProjectTechnologyArray(list: any): ProjectTechnology[] {
 }
 
 export function isProjectTechnologyArray(list: any): list is ProjectTechnology[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isProjectTechnology);
+    return Array.isArray(list) && (list.length > 0 && list.every(isProjectTechnology)) || list.length === 0;
 }

@@ -127,10 +127,27 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                                 item.steps.map((step, stepIndex) => (
                                     <div key={stepIndex} className="flex flex-col justify-center items-star text-justify">
                                         <b className="self-center">{`${stepIndex + 1}. ${step.name[0].toUpperCase()}${step.name.substring(1)}`}</b>
-                                        <p className="text-justify">{`${step.instructions}`}</p>
-                                        {step.image && (
-                                            <img className="mt-pf-2 lg:w-2/3 rounded-2xl" src={step.image} alt={`${step.name}_image`} />
-                                        )}
+                                        {
+                                            step.instructions.map((instruction, instructionIndex) => (
+                                                <Fragment key={instructionIndex}>
+                                                    <p className="text-justify">{instruction.text}</p>
+                                                    {instruction.image && (
+                                                        <img
+                                                            src={instruction.image}
+                                                            alt={`${step.name}_image_${instructionIndex}`}
+                                                            className="rounded-2xl"
+                                                        />
+                                                    )}
+                                                    {instruction.code && (
+                                                        <pre
+                                                            className="bg-pf-dark-1 rounded-lg p-pf-2 text-sm text-pf-dark-6 mt-pf-2"
+                                                        >
+                                                            <code >{instruction.code}</code>
+                                                        </pre>
+                                                    )}
+                                                </Fragment>
+                                            ))
+                                        }
                                     </div>
                                 ))
                             }

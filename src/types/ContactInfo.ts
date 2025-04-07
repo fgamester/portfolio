@@ -28,5 +28,5 @@ export function filterContactInfoArray(list: any): ContactInfo[] {
 }
 
 export function isContactInfoArray(list: any): list is ContactInfo[] {
-    return Array.isArray(list) && list.length > 0 && list.every(isContactInfo);
+    return Array.isArray(list) && (list.length > 0 && list.every(isContactInfo)) || list.length === 0;
 }
