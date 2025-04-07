@@ -121,7 +121,8 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                             {`${item.name[0].toLocaleUpperCase()}${item.name.substring(1)}`}
                         </h4>
                         {item.videoLink && <video className="object-cover w-full h-full" src={item.videoLink} />}
-                        <p>{item.description}</p>
+                        <p
+                        className="text-justify">{item.description}</p>
                         <div className="flex flex-col gap-pf-2">
                             {
                                 item.steps.map((step, stepIndex) => (

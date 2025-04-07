@@ -15,7 +15,13 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
       </header>
       <TagBadges badgeList={item.tags} />
       <div className={`flex gap-pf-2 w-full`}>
-        <p className="text-justify text-base">{item.description.split("\n")[0]}</p>
+        <p
+          className="text-justify text-base"
+        >{`${item.description.split("\n")[0]} `}
+          <Link to={`/content/${group}/${item.id}`} className="hover:underline underline-offset-2">
+            Continuar leyendo...
+          </Link>
+        </p>
         {/* <div className="flex flex-col justify-center items-center overflow-hidden bg-pf-dark-2 rounded-xl aspect-video">
           {item.image ? (
             <img className="object-cover w-full h-full rounded-xl aspect-video" src={item.image} alt={`${item.name}_image`} />

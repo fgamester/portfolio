@@ -35,7 +35,7 @@ export default function FeaturedProjects({ contentList, info }: { contentList: P
                     Ver más...
                 </Link>
             </header>
-            <div>
+            <div className="flex flex-col gap-pf-4">
                 {contentList.map((item, index) =>
                     <HomeContentPreview item={item} group="projects" index={index} key={index} />
                 )
