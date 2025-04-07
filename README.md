@@ -37,9 +37,9 @@ $ npm run dev
 ```
 The project will be running at port 5173 by default, so you will need to type [`localhost:5173`](http://localhost:5173) on your web browser or click the marked link. If port 5173 is already in use, the command will use the next available port, such as 5174, and so on.
 
-### Go and try deployed on Vercel
+### Go and try deployed on Netlify
 
-Just press this link and go there 👉🏻[Press Me]()👈🏻
+Just press this link and go there 👉🏻[Press Me](https://fgamester.netlify.app)👈🏻
 
 ### Try it with Docker
 
