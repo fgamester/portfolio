@@ -2,7 +2,7 @@ import { createContext, useState, ReactNode, useEffect, useCallback } from "reac
 import { Data, ContextProps, formatData } from "../types";
 
 const updateState = (newState: any, setState: (state: any) => void) => setState(() => newState);
-const fetchUrl = import.meta.env.VITE_DATA_URL;
+const fetchUrl = import.meta.env.VITE_DATA_URL || '/example.json';
 
 export const Context = createContext<ContextProps>({
     data: undefined,
