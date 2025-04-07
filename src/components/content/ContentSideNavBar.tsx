@@ -15,7 +15,7 @@ export default function ContentSideNavBar({ postData }: { postData: Project }) {
                 {isProject(postData) && (
                     <>
                         <h4 className='text-xl text-center'>
-                            Content List
+                            Contenido
                         </h4>
                         <ul className='flex flex-col pl-5'>
                             <li className='list-disc'>
