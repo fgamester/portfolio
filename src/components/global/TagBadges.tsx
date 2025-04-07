@@ -1,4 +1,4 @@
-import { Fragment, useMemo } from "react"
+import { Fragment } from "react"
 
 const commonTags = [
   'html5',
@@ -19,13 +19,12 @@ const commonTags = [
 ]
 
 export const TagConstructor = ({ tag }: { tag: string }) => {
-  const lowerTag = tag.toLowerCase();
-  const isCommonTag = commonTags.includes(lowerTag);
-
+  const formattedTag = tag.toLowerCase().replace(/[.#]/g,"");
+  const isCommonTag = commonTags.includes(formattedTag);
+  
   return (
     <p
-      className={`size-fit px-tagbadge-x rounded-sm
-        ${isCommonTag ? `bg-tags-bg-${lowerTag} text-tags-text-${lowerTag}` : 'bg-white text-black'}`}
+      className={`size-fit px-tagbadge-x pb-[3px] rounded-md ${isCommonTag ? `bg-tags-bg-${formattedTag} text-tags-text-${formattedTag}` : 'bg-white text-black'}`}
     >
       {tag}
     </p>
