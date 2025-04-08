@@ -37,7 +37,7 @@ export default function ContentView() {
             </header>
             <div className="flex justify-center gap-pf-4 w-full px-pf-2 lg:px-pf-4">
                 <ContentSideNavBar postData={post} />
-                <main className="flex flex-col gap-pf-4 flex-grow xl:flex-grow-0 xl:w-2/3">
+                <main className="flex flex-col w-full gap-pf-4 flex-grow xl:flex-grow-0 xl:w-2/3">
                     <section id="info" className="w-full flex flex-col gap-pf-2 md:bg-pf-dark-4 md:p-pf-3 md:rounded-2xl lg:flex-row scroll-mt-[60px]">
                         <p className="text-justify">
                             {
@@ -116,7 +116,7 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
         <section id="guides" className="flex flex-col gap-pf-4 scroll-mt-[60px]">
             {
                 list.map((item, index) => (
-                    <article key={index} className="flex flex-col w-full gap-pf-3 justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
+                    <article key={index} className="flex flex-col gap-pf-3 justify-center md:p-pf-3 md:bg-pf-dark-4 md:rounded-2xl">
                         <h4 className="text-center text-xl font-bold">
                             {`${item.name[0].toLocaleUpperCase()}${item.name.substring(1)}`}
                         </h4>
@@ -141,7 +141,7 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                                                     )}
                                                     {instruction.code && (
                                                         <pre
-                                                            className="bg-pf-dark-1 rounded-lg p-pf-2 text-sm text-pf-dark-6 mt-pf-2"
+                                                            className="bg-pf-dark-1 rounded-lg p-pf-2 text-sm text-pf-dark-6 mt-pf-2 overflow-auto max-h-[500px]"
                                                         >
                                                             <code >{instruction.code}</code>
                                                         </pre>
