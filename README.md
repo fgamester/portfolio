@@ -93,7 +93,7 @@ $ docker stop <container-name|container-id>
 ### Version Notes
 
 #### 1.0.2
-- Added _redirect file to the project to allow Netlify to redirect the requests to the correct URL.
+- Added _redirects file to the project to allow Netlify to redirect the requests to the correct URL.
 
 #### 1.0.1
 - Added a new section to the README file with the version notes.
