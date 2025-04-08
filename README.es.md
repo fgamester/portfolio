@@ -93,6 +93,9 @@ $ docker stop <container-name|container-id>
 
 ### Notas de la versión
 
+#### 1.0.2
+- Agregado archivo -redirects a la carpeta public para permitir a Netlify redirigir las peticiones a la URL correcta.
+
 #### 1.0.1
 - Agregada una nueva sección en el README con notas de la versión.
 - Agregado título dinámico a la página.

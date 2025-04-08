@@ -92,6 +92,9 @@ $ docker stop <container-name|container-id>
 
 ### Version Notes
 
+#### 1.0.2
+- Added _redirect file to the project to allow Netlify to redirect the requests to the correct URL.
+
 #### 1.0.1
 - Added a new section to the README file with the version notes.
 - Added dinamic title to the page.
@@ -101,5 +104,4 @@ $ docker stop <container-name|container-id>
 - Changed some styles on Home View.
 
 #### 1.0.0
-
 First version of the project, with all the basic functionalities and design.
