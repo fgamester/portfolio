@@ -89,3 +89,17 @@ Whenever you want to stop the container just run the following command:
 $ docker stop <container-name|container-id>
 ```
 >*Here you can stop the container by typing its name or id, if you set a name before I recommend to use it.*
+
+### Version Notes
+
+#### 1.0.1
+- Added a new section to the README file with the version notes.
+- Added dinamic title to the page.
+- Fixed a style issues on Content View.
+- Fixed infinite loading on Content View where no projects or exercises were found.
+- Changed some styles on About View.
+- Changed some styles on Home View.
+
+#### 1.0.0
+
+First version of the project, with all the basic functionalities and design.

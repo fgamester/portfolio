@@ -1,4 +1,10 @@
+import { useEffect } from "react"
+
 export default function NotFoundView() {
+  useEffect(() => {
+    document.title = '404 Not Found - Portafolio';
+  }, [])
+
   return (
     <div className="flex flex-col gap-pf-2 justify-center">
       <h1 className="text-pf-dark-1 text-6xl px-pf-6 text-center">

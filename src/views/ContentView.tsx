@@ -1,5 +1,5 @@
 import { Content, Data, isData, isProject, isProjectGuideArray, isProjectLinkArray, isProjectTechnologyArray, Project, ProjectGuide, ProjectLink, ProjectTechnology } from "../types";
-import { useContext, useEffect, useState, Fragment } from "react";
+import { useContext, useEffect, useState, Fragment, useCallback } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../context/GloblalContext";
 import NotFoundView from "./NotFoundView";
@@ -12,25 +12,28 @@ export default function ContentView() {
     const { data, updateState, globalLoading } = useContext(Context);
     const params = useParams();
 
-    useEffect(() => {
-        if (isData(data) && params?.category && data[params.category as keyof Data]) {
-            const content = data[params.category as keyof Data] as Content;
-            if (content && content.content && content.content.length > 0) {
+    const setLocalStates = useCallback(async () => {
+        if (isData(data)) {
+            try {
+                const content = data[params.category as keyof Data] as Content;
                 const found = content.content.find((item) => item.id == params.id);
-                if (found) {
-                    updateState(found, setPost);
-                    setTimeout(() => updateState(false, setLocalLoading), 300);
-                    document.title = `${found.name} - ${data.alias}`;
-                }
+                updateState(found, setPost);
+            } catch (error) {
+                console.error('Error finding content:', error);
             }
         }
+        setTimeout(() => updateState(false, setLocalLoading), 300);
+    }, [data, params]);
+
+    useEffect(() => {
+        setLocalStates();
     }, [data, params]);
 
     if (localLoading || globalLoading) return <LoadingSpinner />;
 
     return isProject(post) ? (
-        <div className="bg-pf-dark-4 p-pf-4 md:bg-transparent md:p-pf-4 w-full flex flex-col gap-pf-3 text-pf-dark-1">
-            <header className="flex justify-center px-pf-4">
+        <div className="bg-pf-dark-4 p-pf-2 pb-pf-6  md:bg-transparent md:px-pf-2 w-full flex flex-col gap-pf-3 text-pf-dark-1">
+            <header className="flex justify-center px-pf-8">
                 <h1 className="text-4xl text-center">
                     {post?.name}
                 </h1>
@@ -122,7 +125,7 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                         </h4>
                         {item.videoLink && <video className="object-cover w-full h-full" src={item.videoLink} />}
                         <p
-                        className="text-justify">{item.description}</p>
+                            className="text-justify">{item.description}</p>
                         <div className="flex flex-col gap-pf-2">
                             {
                                 item.steps.map((step, stepIndex) => (

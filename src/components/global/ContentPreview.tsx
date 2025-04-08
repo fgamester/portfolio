@@ -5,11 +5,11 @@ import TagBadges from "./TagBadges";
 export default function ContentPreview({ item, group, index = 0 }: { item: ProjectType, group: 'projects' | 'exercises', index?: number }) {
   return (
     <article className='flex justify-evenly flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-4 rounded-2xl w-full'>
-      <header className="w-full flex justify-between items-start">
-        <Link to={`/content/${group}/${item.id}`} className="text-xl text-start">
+      <header className="w-full flex flex-col-reverse gap-pf-1">
+        <Link to={`/content/${group}/${item.id}`} className="text-xl text-center">
           {item.name}
         </Link>
-        <p className="text-xs">
+        <p className="text-xs min-w-fit">
           {item.date}
         </p>
       </header>
@@ -40,11 +40,11 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
 export function HomeContentPreview({ item, group, index = 0 }: { item: ProjectType, group: 'projects' | 'exercises', index?: number }) {
   return (
     <div className='flex justify-start flex-wrap p-pf-4 gap-pf-2 bg-pf-dark-4 rounded-2xl'>
-      <header className="w-full flex justify-between items-start">
-        <Link to={`/content/${group}/${item.id}`} className="text-xl text-start">
+      <header className="w-full flex flex-col-reverse gap-pf-1">
+        <Link to={`/content/${group}/${item.id}`} className="text-xl text-center">
           {item.name}
         </Link>
-        <p className="text-xs">
+        <p className="text-xs min-w-fit">
           {item.date}
         </p>
       </header>

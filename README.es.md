@@ -90,3 +90,17 @@ Cuando termines de usar el contenedor puedes detenerlo con el siguiente comando:
 $ docker stop <container-name|container-id>
 ```
 >*Aquí puedes detener el contenedor usando el ID o el nombre, es recomendado este último si especificaste uno.*
+
+### Notas de la versión
+
+#### 1.0.1
+- Agregada una nueva sección en el README con notas de la versión.
+- Agregado título dinámico a la página.
+- Arreglado un problema de estilos en el Content View.
+- Arreglado un cargado infinito en Content View al no encontrarse un proyecto o ejercicio.
+- Cambiados algunos estilos en About View.
+- Cambiados algunos estilos en Home View.
+
+#### 1.0.0
+
+First version of the project, with all the basic functionalities and design.

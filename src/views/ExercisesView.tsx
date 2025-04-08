@@ -18,12 +18,13 @@ export default function ProjectsView() {
 
   useEffect(() => {
     setLocalStates();
+    document.title = 'Ejercicios - Portafolio';
   }, [data?.exercises]);
 
   if (localLoading || globalLoading) return <LoadingSpinner />;
 
   return isProjectArray(projectArray) ? (
-    <div className="flex flex-col items-center px-pf-1 sm:px-pf-3 gap-pf-4 py-pf-4 text-pf-dark-1 lg:w-2/3 xl:w-1/2">
+    <div className="flex flex-col items-center px-pf-2 sm:px-pf-3 gap-pf-4 py-pf-4 text-pf-dark-1 lg:w-2/3 xl:w-1/2">
       <header>
         <h1 className="text-4xl text-center">
           Ejercicios

@@ -26,16 +26,19 @@ export default function HomeView() {
     setTimeout(() => updateState(false, setLocalLoading), 300);
   }, [data])
 
+  useEffect(() => {
+    setLocalData();
+  }, [data]);
 
   useEffect(() => {
-    setLocalData()
-  }, [data]);
+    document.title = `${featured?.about.name} - Portafolio`;
+  }, [featured?.about.name]);
 
   if (localLoading || globalLoading) return <LoadingSpinner />;
 
   return isFeatured(featured) ? (
     <div className='flex flex-col items-center gap-pf-4 py-pf-4 text-pf-dark-1'>
-      <header className=''>
+      <header className='px-pf-8'>
         <h1 className="text-4xl text-center">
           {`Bienvenidos al Portafolio de ${featured.about.name}`}
         </h1>
