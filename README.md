@@ -1,3 +1,5 @@
+[Léelo en Español](/README.es.md)
+
 # Portfolio
 
 Hello there👋🏼👋🏼👋🏼  
@@ -56,10 +58,10 @@ $ docker pull fgamester/portfolio
 
 Then run a container with the same image:
 ```bash
-$ docker run --name container-name -p 5173:5173 -e VITE_DATA_URL=https://gist.githubusercontent.com/fgamester/d7819ab8dcd914121e12f757d5af7a43/raw/data_example.json -d fgamester/portfolio:dev1.0.0
+$ docker run --name <container-name> -p <5173:5173> -e VITE_DATA_URL=https://gist.githubusercontent.com/fgamester/d7819ab8dcd914121e12f757d5af7a43/raw/data_example.json -d fgamester/portfolio:dev1.0.0
 ```
 ```bash
-$ docker run --name container-name -p 3000:3000 -d fgamester/portfolio
+$ docker run --name <container-name> -p <3000:3000> -d fgamester/portfolio
 ```
 >*As before, you have two options: dev and built, remember to use the one you chose earlier.*
 #### About this command:
@@ -74,7 +76,7 @@ $ docker run --name container-name -p 3000:3000 -d fgamester/portfolio
 
 `-e`: This one is essentially optional. Allows us to set environment variables, the project is configured to use optionally one, in case you don't set a value to it, it will use the default information from the example.json contained in the project.
 
-`VITE_DATA_URL=...`: If you choose to set an environment variable before you can set its value after the `=` symbol (without whitespaces). The value showed above is a public GitHub Gist with an example of the data structure. Not setting this variable will make the project to use the default data from the example.json file contained in the project.
+`VITE_DATA_URL=...`: If you choose to set an environment variable before, you can set its value after the `=` symbol (without whitespaces). The value showed above is a public GitHub Gist with an example of the data structure. Not setting this variable will make the project to use the default data from the example.json file contained in the project.
 
 `-d`: Optional, run the container in `detach` mode (background). In this mode the only way to stop the container is by the terminal command or at the Docker interface. Not using it will cause the container to stop when the terminal is closed.
 
