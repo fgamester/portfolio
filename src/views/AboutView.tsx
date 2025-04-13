@@ -4,6 +4,7 @@ import { Context } from "../context/GloblalContext"
 import NotFoundView from "./NotFoundView";
 import LoadingSpinner from "../components/global/LoadingSpinner";
 import { ContactInfoSection } from "../components/global/ContactInfoSection";
+import MetaTags from "../components/global/MetaTags";
 
 export default function AboutView() {
   const { data, updateState, globalLoading } = useContext(Context);
@@ -24,6 +25,7 @@ export default function AboutView() {
 
   return isAbout(about) ? (
     <div className="bg-pf-dark-4 gap-pf-4 p-pf-2 md:bg-transparent md:p-pf-4 w-full flex flex-col text-pf-dark-1">
+      <MetaTags title="Sobre mí - Portafolio" description="Conoce más sobre mí, mis habilidades y mi experiencia en desarrollo web." index url='https://fgamester.netlify.app/about' />
       <header>
         <h1 className="text-4xl text-center">
           Sobre mí

@@ -7,13 +7,13 @@ Este es el proyecto para mi portafolio, en donde quiero presentar todos mis proy
 
 Desarrollado de forma que no necesito actualizar el código para agregar más contenido, esto debido a que el contenido se obtiene madiante una consulta a un Gist de GitHub. El portafolio lee esa información y la muestra. Obviamente, si quiero añadir mas secciones o funciones tendré que mejorar el proyecto, pero para añadir posts, no será necesario.
 
-### Tecnologías usadas:
+## Tecnologías usadas:
 
-**-React:** La librería de JavaScript que acelera el desarrollo Frontend unificando HTML y JavaScript a través de su formato de componentes.
-
-**-TypeScript:** Un lenguaje de programación extendido a partir de JavaScript, permitiendo un mayor control sobre las variables y tipos de datos.
-
-**-TailwindCSS:** Un framework CSS que proporciona una combinación de clases (como Bootstrap) y propiedades CSS personalizadas, con la particularidad de que podemos compilarlo para crear una hoja de estilos personalizada con solo los estilos necesarios, disminuyendo considerablemente el peso de nuestro proyecto para su despliegue/producción.
+- **React:** La librería de JavaScript que acelera el desarrollo Frontend unificando HTML y JavaScript a través de su formato de componentes.
+- **TypeScript:** Un lenguaje de programación extendido a partir de JavaScript, permitiendo un mayor control sobre las variables y tipos de datos.
+- **TailwindCSS:** Un framework CSS que proporciona una combinación de clases (como Bootstrap) y propiedades CSS personalizadas, con la particularidad de que podemos compilarlo para crear una hoja de estilos personalizada con solo los estilos necesarios, disminuyendo considerablemente el peso de nuestro proyecto para su despliegue/producción.
+- **react-router-dom:** Una librería que nos permite crear una aplicación de una sola página (SPA) con React, permitiendo el uso de múltiples páginas sin necesidad de recargar completamente la página.
+- **ract-helmet:** Una librería que nos permite gestionar el título y las meta tags de nuestra página, mejorando el SEO y la experiencia del usuario.
 
 ## ¿Quieres probarlo?
 
@@ -91,10 +91,15 @@ $ docker stop <container-name|container-id>
 ```
 >*Aquí puedes detener el contenedor usando el ID o el nombre, es recomendado este último si especificaste uno.*
 
-### Notas de la versión
+## Notas de la versión
+
+#### 1.0.3
+- Agregado react-helmet para gestionar el título y las meta tags de la página.
+- Cambiados algunos estilos y estructura en Content View para mejor claridad visual.
+- Cambiado idioma de NotFound View a español.
 
 #### 1.0.2
-- Agregado archivo -redirects a la carpeta public para permitir a Netlify redirigir las peticiones a la URL correcta.
+- Agregado archivo _redirects a la carpeta public para permitir a Netlify redirigir las peticiones a la URL correcta.
 
 #### 1.0.1
 - Agregada una nueva sección en el README con notas de la versión.
@@ -104,6 +109,6 @@ $ docker stop <container-name|container-id>
 - Cambiados algunos estilos en About View.
 - Cambiados algunos estilos en Home View.
 
-#### 1.0.0
+### 1.0.0
 
 First version of the project, with all the basic functionalities and design.

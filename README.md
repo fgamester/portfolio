@@ -7,13 +7,13 @@ This is my personal portfolio project, where I want to display all my projects, 
 
 It was developed in a way that I won't need to update the code if i want to add content, this is because all the content is fetched from a Gist on GitHub. The portfolio reads that information and displays it. Obviously, if i want to add more sections i will need to improve the project, but for adding posts, it won´t be necessary.
 
-### Used Technologies:
+## Used Technologies:
 
-**-React:** The JavaScript library that speeds up Frontend coding unifying HTML and JavaScript through its component format.
-
-**-TypeScript:** A programming language extended from JavaScript, allowing for more control over variables and data types.
-
-**-TailwindCSS:** A CSS framework that provides a combination of classes (like Bootstrap) and custom CSS properties, with the particularity that we can compile it to create a customized stylesheet with only the necessary styles, considerably decreasing our project's weight for its deployment/production.
+- **React:** The JavaScript library that speeds up Frontend coding unifying HTML and JavaScript through its component format.
+- **TypeScript:** A programming language extended from JavaScript, allowing for more control over variables and data types.
+- **TailwindCSS:** A CSS framework that provides a combination of classes (like Bootstrap) and custom CSS properties, with the particularity that we can compile it to create a customized stylesheet with only the necessary styles, considerably decreasing our project's weight for its deployment/production.
+- **react-router-dom:** A library that allows us to create a single page application (SPA) with React, enabling the use of multiple pages without the need for a full reload.
+- **ract-helmet:** A library that allows us to manage the title and meta tags of our page, improving SEO and the user experience.
 
 ## You want to try it?
 
@@ -90,7 +90,12 @@ $ docker stop <container-name|container-id>
 ```
 >*Here you can stop the container by typing its name or id, if you set a name before I recommend to use it.*
 
-### Version Notes
+## Version Notes
+
+#### 1.0.3
+- Added react-helmet to manage the title and meta tags of the page.
+- Changed some styles and the structure of Content View to improve visual clarity.
+- Changed language of NotFound View to Spanish.
 
 #### 1.0.2
 - Added _redirects file to the project to allow Netlify to redirect the requests to the correct URL.
@@ -103,5 +108,5 @@ $ docker stop <container-name|container-id>
 - Changed some styles on About View.
 - Changed some styles on Home View.
 
-#### 1.0.0
+### 1.0.0
 First version of the project, with all the basic functionalities and design.

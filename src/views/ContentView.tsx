@@ -5,6 +5,7 @@ import { Context } from "../context/GloblalContext";
 import NotFoundView from "./NotFoundView";
 import ContentSideNavBar from "../components/content/ContentSideNavBar";
 import LoadingSpinner from "../components/global/LoadingSpinner";
+import MetaTags from "../components/global/MetaTags";
 
 export default function ContentView() {
     const [post, setPost] = useState<Project | undefined>(undefined);
@@ -33,6 +34,7 @@ export default function ContentView() {
 
     return isProject(post) ? (
         <div className="bg-pf-dark-4 p-pf-2 pb-pf-6  md:bg-transparent md:px-pf-2 w-full flex flex-col gap-pf-3 text-pf-dark-1">
+            <MetaTags title={`${post.name} - Proyecto`} description={`${post.name} - Proyecto`} index />
             <header className="flex justify-center px-pf-8">
                 <h1 className="text-4xl text-center">
                     {post?.name}
@@ -129,11 +131,13 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                         <div className="flex flex-col gap-pf-2">
                             {
                                 item.steps.map((step, stepIndex) => (
-                                    <div key={stepIndex} className="flex flex-col justify-center items-star text-justify">
+                                    <div key={stepIndex} className="flex flex-col justify-center items-star text-justify gap-pf-1">
                                         <b className="self-center">{`${stepIndex + 1}. ${step.name[0].toUpperCase()}${step.name.substring(1)}`}</b>
                                         {
                                             step.instructions.map((instruction, instructionIndex) => (
-                                                <Fragment key={instructionIndex}>
+                                                <div
+                                                    className="flex flex-col"
+                                                    key={instructionIndex}>
                                                     <p className="text-justify">{instruction.text}</p>
                                                     {instruction.image && (
                                                         <img
@@ -149,7 +153,7 @@ function GuidesSection({ list }: { list: ProjectGuide[] }) {
                                                             <code >{instruction.code}</code>
                                                         </pre>
                                                     )}
-                                                </Fragment>
+                                                </div>
                                             ))
                                         }
                                     </div>

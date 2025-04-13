@@ -1,6 +1,7 @@
 import { isProjectArray, Project, Featured, isFeatured, isTechnologyArray, isContactInfoArray } from "../types";
 import { useCallback, useContext, useEffect, useState } from "react";
 import { Context } from "../context/GloblalContext";
+import MetaTags from "../components/global/MetaTags";
 import KnownTechnologies from "../components/home/KnownTechnologies";
 import HomeSideNavBar from "../components/home/HomeSideNavBar";
 import LoadingSpinner from "../components/global/LoadingSpinner";
@@ -22,7 +23,6 @@ export default function HomeView() {
     updateState(projectList, setProjects);
     const exercisesList = data?.exercises?.content.filter(item => data?.featured?.exercises?.includes(item.id));
     updateState(exercisesList, setExercises);
-
     setTimeout(() => updateState(false, setLocalLoading), 300);
   }, [data])
 
@@ -30,14 +30,11 @@ export default function HomeView() {
     setLocalData();
   }, [data]);
 
-  useEffect(() => {
-    document.title = `${featured?.about.name} - Portafolio`;
-  }, [featured?.about.name]);
-
   if (localLoading || globalLoading) return <LoadingSpinner />;
 
   return isFeatured(featured) ? (
     <div className='flex flex-col items-center gap-pf-4 py-pf-4 text-pf-dark-1'>
+      <MetaTags title={`Portafolio de ${featured.about.name} - Desarrollo Web`} description={`Portafolio de ${featured.about.name}: Explora proyectos, ejercicios y conocimientos de desarrollo web, programación y tecnologías como React, Tailwind, Python, Docker y más.`} index author={featured.about.name} url='https://fgamester.netlify.app' />
       <header className='px-pf-8'>
         <h1 className="text-4xl text-center">
           {`Bienvenidos al Portafolio de ${featured.about.name}`}
