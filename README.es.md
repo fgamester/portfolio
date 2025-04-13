@@ -93,6 +93,9 @@ $ docker stop <container-name|container-id>
 
 ## Notas de la versión
 
+### 1.0.5
+- Cambiada ubicación de google-site-verification a index.html para evitar problemas de carga en el servidor de Netlify.
+
 ### 1.0.4
 - Agregado google-site-verification al proyecto para verificar el sub-dominio en Google Search Console.
 
