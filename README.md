@@ -92,6 +92,9 @@ $ docker stop <container-name|container-id>
 
 ## Version Notes
 
+### 1.0.4
+- Added google-site-verification to the project to verify the sub-domain on Google Search Console.
+
 #### 1.0.3
 - Added react-helmet to manage the title and meta tags of the page.
 - Changed some styles and the structure of Content View to improve visual clarity.
