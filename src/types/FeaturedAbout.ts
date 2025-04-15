@@ -1,4 +1,4 @@
-import { ContactInfo, filterContactInfoArray, isContactInfoArray } from "./ContactInfo";
+import { ContactInfo, filterContactInfoArray, formatContactInfo, isContactInfoArray } from "./ContactInfo";
 
 export type FeaturedAbout = {
     description: string,
@@ -32,7 +32,14 @@ export function formatFeaturedAbout(obj: any): FeaturedAbout | undefined {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
     if (isFeaturedAbout(obj)) return obj as FeaturedAbout;
 
-    if ('contact' in obj && !isContactInfoArray(obj.contact)) obj.contact = filterContactInfoArray(obj.contact);
+    const newObj: Partial<FeaturedAbout> = {};
+    newObj.description = obj.description;
+    newObj.name = obj.name;
+    newObj.alias = obj.alias;
+    if ('contact' in obj && Array.isArray(obj.contact)) {
+        const tempList = obj.contact.map((item: any) => formatContactInfo(item));
+        newObj.contact = filterContactInfoArray(tempList);
+    }
 
-    return isFeaturedAbout(obj) ? obj as FeaturedAbout : undefined;
+    return isFeaturedAbout(newObj) ? newObj as FeaturedAbout : undefined;
 }

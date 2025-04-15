@@ -24,14 +24,14 @@ export default function AboutView() {
   if (localLoading || globalLoading) return <LoadingSpinner />;
 
   return isAbout(about) ? (
-    <div className="bg-pf-dark-4 gap-pf-4 p-pf-2 md:bg-transparent md:p-pf-4 w-full flex flex-col text-pf-dark-1">
+    <div className="bg-pf-dark-4 gap-pf-4 p-pf-2 md:bg-transparent md:p-pf-4 w-full flex flex-col items-center text-pf-dark-1">
       <MetaTags title="Sobre mí - Portafolio" description="Conoce más sobre mí, mis habilidades y mi experiencia en desarrollo web." index url='https://fgamester.netlify.app/about' />
       <header>
         <h1 className="text-4xl text-center">
           Sobre mí
         </h1>
       </header>
-      <main className="flex flex-col gap-pf-4">
+      <main className="flex flex-col gap-pf-4 lg:w-3/4 xl:w-2/3 2xl:w-1/2">
         <section id="iam" className="flex flex-col lg:flex-row md:bg-pf-dark-4 px-pf-2 md:p-pf-3 rounded-2xl">
           <article className="flex flex-col gap-pf-2">
             <h4 className="text-xl text-center">

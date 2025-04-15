@@ -18,11 +18,27 @@ export function isProjectTechnology(obj: any): obj is ProjectTechnology {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function formatProjectTechnology(obj: any): ProjectTechnology | undefined {
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
+    if (!isProjectTechnology(obj)) return obj as ProjectTechnology;
+
+    const newObj: Partial<ProjectTechnology> = {};
+
+    newObj.name = obj.name;
+    newObj.usedFor = obj.usedFor;
+
+    return isProjectTechnology(newObj) ? newObj as ProjectTechnology : undefined;
+}
+
 export function filterProjectTechnologyArray(list: any): ProjectTechnology[] {
     return Array.isArray(list) ? list.filter(isProjectTechnology) : [];
 
 }
 
 export function isProjectTechnologyArray(list: any): list is ProjectTechnology[] {
-    return Array.isArray(list) && (list.length > 0 && list.every(isProjectTechnology)) || list.length === 0;
+    return Array.isArray(list) && list.length > 0 && list.every(isProjectTechnology);
+}
+
+export function isValidProjectTechnologyArray(list: any): list is ProjectTechnology[] {
+    return Array.isArray(list) && list.every(isProjectTechnology);
 }

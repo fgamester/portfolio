@@ -1,4 +1,15 @@
-[Read it in English](/README.md)
+## Enlaces
+[Read it in English](/README.md)  
+[Pruébalo en Netlify](https://fgamester.netlify.app)
+
+
+## Contenido
+- [Descripción](#portafolio)
+- [Tecnologías usadas:](#tecnologías-usadas)
+- [Guías y demás](#guías-y-demás)
+  - [Clona el repositorio](#obtén-el-repositorio-para-ti-mism@)
+  - [Pruébalo con Docker](#prúebalo-con-docker)
+- [Notas de la Versión](#notas-de-la-versión)
 
 # Portafolio
 
@@ -15,7 +26,7 @@ Desarrollado de forma que no necesito actualizar el código para agregar más co
 - **react-router-dom:** Una librería que nos permite crear una aplicación de una sola página (SPA) con React, permitiendo el uso de múltiples páginas sin necesidad de recargar completamente la página.
 - **ract-helmet:** Una librería que nos permite gestionar el título y las meta tags de nuestra página, mejorando el SEO y la experiencia del usuario.
 
-## ¿Quieres probarlo?
+## Guías y demás
 
 ### Obtén el repositorio para ti mism@
 
@@ -38,10 +49,6 @@ Y por último ejecuta el servidor localmente con el siguiente comando:
 $ npm run dev
 ```
 El proyecto estará corriendo en el puerto 5173 por defecto, así que tendrás que escribir [`localhost:5173`](http://localhost:5173) en tu navegador o hacer click en el enlace marcado. Si el puerto 5173 ya está en uso, el comando usará el siguiente puerto disponible, como 5174, y así sucesivamente.
-
-### Ve y pruébalo desplegado en Netlify
-
-Solo presiona el siguiente enlace 👉🏻[Presioname](https://fgamester.netlify.app)👈🏻
 
 ### Prúebalo con Docker
 
@@ -93,8 +100,16 @@ $ docker stop <container-name|container-id>
 
 ## Notas de la versión
 
+### 1.0.6
+- Agregados links del contenido en la parte superior del README para mejorar la navegación.
+- Agregada responsividad a About View.
+- Mejorada la lógica de validación y formateo de las funciones type guard.
+- Cambiadas algunas propiedades de MetaTags en Content View.
+- Corregidos unos problemas de estilos en Content View en pantallas con ancho lg.
+- Creados componentes de secciones de Content View para mejorar la estructura de código y legibilidad.
+
 ### 1.0.5
-- Cambiada ubicación de google-site-verification a index.html para evitar problemas de carga en el servidor de Netlify.
+- Movido google-site-verification a index.html para evitar problemas de carga en el servidor de Netlify.
 
 ### 1.0.4
 - Agregado google-site-verification al proyecto para verificar el sub-dominio en Google Search Console.
@@ -110,8 +125,8 @@ $ docker stop <container-name|container-id>
 #### 1.0.1
 - Agregada una nueva sección en el README con notas de la versión.
 - Agregado título dinámico a la página.
-- Arreglado un problema de estilos en el Content View.
-- Arreglado un cargado infinito en Content View al no encontrarse un proyecto o ejercicio.
+- Corregido un problema de estilos en el Content View.
+- Corregido un cargado infinito en Content View al no encontrarse un proyecto o ejercicio.
 - Cambiados algunos estilos en About View.
 - Cambiados algunos estilos en Home View.
 

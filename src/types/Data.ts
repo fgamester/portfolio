@@ -1,9 +1,10 @@
+import { format } from "path";
 import { About, formatAbout, isAbout } from "./About";
 import { Activity, isActivity } from "./Activity";
 import { Content, formatContent, isContent } from "./Content";
-import { Featured, isFeatured } from "./Featured";
+import { Featured, formatFeatured, isFeatured } from "./Featured";
 import { Hobby, isHobby } from "./Hobbie";
-import { filterTechnologyArray, isTechnologyArray, Technology } from "./Technology";
+import { filterTechnologyArray, formatTechnology, isTechnologyArray, isValidTechnologyArray, Technology } from "./Technology";
 
 export type Data = {
     name: string,
@@ -30,7 +31,7 @@ export function isData(obj: any): obj is Data {
     if ('name' in obj && typeof obj.name !== 'string') return false;
     if ('alias' in obj && typeof obj.alias !== 'string') return false;
     if ('about' in obj && obj.about !== undefined && !isAbout(obj.about)) return false;
-    if ('technologies' in obj && obj.technologies !== undefined && !isTechnologyArray(obj.technologies)) return false;
+    if ('technologies' in obj && obj.technologies !== undefined && !isValidTechnologyArray(obj.technologies)) return false;
     if (!isFeatured(obj.featured)) return false;
     if ('projects' in obj && obj.projects !== undefined && !isContent(obj.projects)) return false;
     if ('exercises' in obj && obj.exercises !== undefined && !isContent(obj.exercises)) return false;
@@ -43,11 +44,18 @@ export function formatData(obj: any): Data | undefined {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
     if (isData(obj)) return obj as Data;
 
-    if ('about' in obj) obj.about = formatAbout(obj.about);
-    if ('technologies' in obj) obj.technologies = filterTechnologyArray(obj.technologies);
-    if ('projects' in obj) obj.projects = formatContent(obj.projects);
-    if ('exercises' in obj) obj.exercises = formatContent(obj.exercises);
-    if ('hobbies' in obj) obj.hobbies = obj.hobbies.filter((item: any) => isActivity(item) || isHobby(item));
+    const newObj: Partial<Data> = {};
+    newObj.name = obj.name;
+    newObj.alias = obj.alias;
+    newObj.featured = formatFeatured(obj.featured);
+    if ('about' in obj) newObj.about = formatAbout(obj.about);
+    if ('technologies' in obj && Array.isArray(obj.technologies)) {
+        const tempList = obj.technologies.map((item: any) => formatTechnology(item));
+        newObj.technologies = filterTechnologyArray(tempList);
+    }
+    if ('projects' in obj) newObj.projects = formatContent(obj.projects);
+    if ('exercises' in obj) newObj.exercises = formatContent(obj.exercises);
 
-    return isData(obj) ? obj as Data : undefined;
+
+    return isData(newObj) ? newObj as Data : undefined;
 }

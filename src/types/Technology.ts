@@ -19,10 +19,26 @@ export function isTechnology(obj: any): obj is Technology {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function formatTechnology(obj: any): Technology | undefined {
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
+    if (isTechnology(obj)) return obj as Technology;
+
+    const newObj: Partial<Technology> = {};
+
+    newObj.name = obj.name;
+    newObj.image = obj.image;
+
+    return isTechnology(newObj) ? newObj as Technology : undefined;
+}
+
 export function filterTechnologyArray(list: any): Technology[] {
     return Array.isArray(list) ? list.filter(isTechnology) : [];
 }
 
 export function isTechnologyArray(list: any): list is Technology[] {
-    return Array.isArray(list) && (list.length > 0 && list.every(isTechnology)) || list.length === 0;
+    return Array.isArray(list) && list.length > 0 && list.every(isTechnology);
+}
+
+export function isValidTechnologyArray(list: any): list is Technology[] {
+    return Array.isArray(list) && list.every(isTechnology);
 }

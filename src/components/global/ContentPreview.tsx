@@ -13,7 +13,7 @@ export default function ContentPreview({ item, group, index = 0 }: { item: Proje
           {item.date}
         </p>
       </header>
-      <TagBadges badgeList={item.tags} />
+      {(Array.isArray(item.tags) && item.tags.length > 0) && <TagBadges badgeList={item.tags} />}
       <div className={`flex gap-pf-2 w-full`}>
         <p
           className="text-justify text-base"
@@ -48,7 +48,7 @@ export function HomeContentPreview({ item, group, index = 0 }: { item: ProjectTy
           {item.date}
         </p>
       </header>
-      <TagBadges badgeList={item.tags} />
+      {(Array.isArray(item.tags) && item.tags.length > 0) && <TagBadges badgeList={item.tags} />}
       <div className={`flex items-center flex-col-reverse ${index % 2 !== 0 ? 'lg:flex-row-reverse' : 'lg:flex-row'} lg:items-start gap-pf-2 w-full`}>
         <p
           className="text-justify text-base"

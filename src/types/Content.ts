@@ -27,11 +27,16 @@ export function formatContent(obj: any): Content | undefined {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
     if (isContent(obj)) return obj as Content;
 
-    if ('content' in obj) {
-        obj.content = obj.content.map(formatProject);
-        obj.content = filterProjectArray(obj.content);
+    const newObj: Partial<Content> = {};
+
+    newObj.description = obj.description;
+    if ('info' in obj && typeof obj.info === 'string') newObj.info = obj.info;
+    if ('content' in obj && Array.isArray(obj.content)) {
+        const tempList = obj.content.map((item: any) => formatProject(item));
+        const filteredList = filterProjectArray(tempList);
+        if (filteredList.length > 0) newObj.content = filteredList;
     }
 
-    return isContent(obj) ? obj as Content : undefined;
+    return isContent(newObj) ? newObj as Content : undefined;
 }
 

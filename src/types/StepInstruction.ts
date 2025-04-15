@@ -24,10 +24,28 @@ export function isStepInstruction(obj: any): obj is StepInstruction {
     return hasRequiredProperties && hasOnlyAllowedProperties;
 }
 
+export function formatStepInstruction(obj: any): StepInstruction | undefined {
+    if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
+    if (isStepInstruction(obj)) return obj as StepInstruction;
+
+    const newObj: Partial<StepInstruction> = {};
+
+    newObj.text = obj.text;
+    if ('image' in obj && typeof obj.image === 'string') newObj.image = obj.image;
+    if ('code' in obj && typeof obj.code === 'string') newObj.code = obj.code;
+    if ('codeLanguage' in obj && typeof obj.codeLanguage === 'string') newObj.codeLanguage = obj.codeLanguage;
+
+    return isStepInstruction(newObj) ? newObj as StepInstruction : undefined;
+}
+
 export function filterStepInstructionArray(list: any): StepInstruction[] {
     return Array.isArray(list) ? list.filter(isStepInstruction) : [];
 }
 
-export function isStepInstructionArray(list: any): list is StepInstruction[] {  
-    return Array.isArray(list) && (list.length > 0 && list.every(isStepInstruction)) || list.length === 0;
+export function isStepInstructionArray(list: any): list is StepInstruction[] {
+    return Array.isArray(list) && list.length > 0 && list.every(isStepInstruction);
+}
+
+export function isValidStepInstructionArray(list: any): list is StepInstruction[] {
+    return Array.isArray(list) && list.every(isStepInstruction);
 }

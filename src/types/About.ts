@@ -1,4 +1,4 @@
-import { ContactInfo, filterContactInfoArray, isContactInfoArray } from "./ContactInfo";
+import { ContactInfo, filterContactInfoArray, formatContactInfo, isContactInfoArray } from "./ContactInfo";
 
 export type About = {
     description: string,
@@ -30,7 +30,14 @@ export function formatAbout(obj: any): About | undefined {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
     if (isAbout(obj)) return obj as About;
 
-    if ('contact' in obj && !isContactInfoArray(obj.contact)) obj.contact = filterContactInfoArray(obj.contact);
+    const newObj: Partial<About> = {};
+    newObj.description = obj.description;
+    if ('image' in obj && typeof obj.image === 'string') newObj.image = obj.image;
+    if ('currentWork' in obj && typeof obj.currentWork === 'string') newObj.currentWork = obj.currentWork;
+    if ('contact' in obj && Array.isArray(obj.contact)) {
+        const tempList = obj.contact.map((item: any) => formatContactInfo(item));
+        newObj.contact = filterContactInfoArray(tempList);
+    }
 
-    return isAbout(obj) ? obj as About : undefined;
+    return isAbout(newObj) ? newObj as About : undefined;
 }

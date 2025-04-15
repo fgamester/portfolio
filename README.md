@@ -1,4 +1,14 @@
-[Léelo en Español](/README.es.md)
+## Links
+[Léelo en Español](/README.es.md)  
+[Try it on Netlify](https://fgamester.netlify.app)
+
+## Content
+- [Description](#portfolio)
+- [Used Technologies:](#used-technologies)
+- [Guides and More](#you-want-to-try-it)
+  - [Clone the repository](#get-the-repository-to-your-local-workspace)
+  - [Try it with Docker](#try-it-with-docker)
+- [Version Notes](#version-notes)
 
 # Portfolio
 
@@ -15,7 +25,7 @@ It was developed in a way that I won't need to update the code if i want to add 
 - **react-router-dom:** A library that allows us to create a single page application (SPA) with React, enabling the use of multiple pages without the need for a full reload.
 - **ract-helmet:** A library that allows us to manage the title and meta tags of our page, improving SEO and the user experience.
 
-## You want to try it?
+## Guides and More
 
 ### Get the repository to your local workspace
 
@@ -38,10 +48,6 @@ And finally run the server locally with the following command:
 $ npm run dev
 ```
 The project will be running at port 5173 by default, so you will need to type [`localhost:5173`](http://localhost:5173) on your web browser or click the marked link. If port 5173 is already in use, the command will use the next available port, such as 5174, and so on.
-
-### Go and try deployed on Netlify
-
-Just press this link and go there 👉🏻[Press Me](https://fgamester.netlify.app)👈🏻
 
 ### Try it with Docker
 
@@ -92,8 +98,16 @@ $ docker stop <container-name|container-id>
 
 ## Version Notes
 
+### 1.0.6
+- Added content links to the top of the README file to improve navigation.
+- Added responsiveness to the About View.
+- Improved the logic for validation and formatting in type guard functions.
+- Changed some MetaTags Props on Content View.
+- Fixed styles issues on the Content View at the lg-size.
+- Created Content View section components to improve code structure and readability.
+
 ### 1.0.5
-- Changed google-site-verification ubication to index.html to avoid loading issues on Netlify server.
+- Moved google-site-verification to index.html to avoid loading issues on Netlify server.
 
 ### 1.0.4
 - Added google-site-verification to the project to verify the sub-domain on Google Search Console.

@@ -1,6 +1,6 @@
-import { filterProjectGuideArray, isProjectGuideArray, ProjectGuide } from "./ProjectGuide";
-import { filterProjectLinkArray, isProjectLinkArray, ProjectLink } from "./ProjectLink";
-import { filterProjectTechnologyArray, isProjectTechnologyArray, ProjectTechnology } from "./ProjectTechnology";
+import { filterProjectGuideArray, formatProjectGuide, isValidProjectGuideArray, ProjectGuide } from "./ProjectGuide";
+import { filterProjectLinkArray, formatProjectLink, isValidProjectLinkArray, ProjectLink } from "./ProjectLink";
+import { filterProjectTechnologyArray, formatProjectTechnology, isValidProjectTechnologyArray, ProjectTechnology } from "./ProjectTechnology";
 
 export type Project = {
     id: string,
@@ -8,7 +8,7 @@ export type Project = {
     date: string,
     description: string,
     image?: string,
-    tags: string[],
+    tags?: string[],
     technologies?: ProjectTechnology[],
     links?: ProjectLink[],
     guides?: ProjectGuide[]
@@ -24,17 +24,19 @@ export function isProject(obj: any): obj is Project {
     const hasRequiredProperties = requiredProperties.every(prop => prop in obj);
     const hasOnlyAllowedProperties = objKeys.every(prop => requiredProperties.includes(prop) || optionalProperties.includes(prop));
 
+    if (!hasRequiredProperties || !hasOnlyAllowedProperties) return false;
+
     if (typeof obj.id !== 'string') return false;
     if (typeof obj.name !== 'string') return false;
     if (typeof obj.date !== 'string') return false;
     if (typeof obj.description !== 'string') return false;
     if ('image' in obj && typeof obj.image !== 'string') return false;
     if (!obj?.tags?.every((tag: any) => typeof tag === 'string')) return false;
-    if ('technologies' in obj && !isProjectTechnologyArray(obj.technologies)) return false;
-    if ('links' in obj && !isProjectLinkArray(obj.links)) return false;
-    if ('guides' in obj && !isProjectGuideArray(obj.guides)) return false;
+    if ('technologies' in obj && !isValidProjectTechnologyArray(obj.technologies)) return false;
+    if ('links' in obj && !isValidProjectLinkArray(obj.links)) return false;
+    if ('guides' in obj && !isValidProjectGuideArray(obj.guides)) return false;
 
-    return hasRequiredProperties && hasOnlyAllowedProperties;
+    return true;
 }
 
 export function filterTags(list: any): string[] {
@@ -45,12 +47,29 @@ export function formatProject(obj: any): Project | undefined {
     if (!obj || Array.isArray(obj) || typeof obj !== 'object') return undefined;
     if (isProject(obj)) return obj as Project;
 
-    if ('tags' in obj) obj.tags = filterTags(obj.tags);
-    if ('technologies' in obj) obj.technologies = filterProjectTechnologyArray(obj.technologies);
-    if ('links' in obj) obj.links = filterProjectLinkArray(obj.links);
-    if ('guides' in obj) obj.guides = filterProjectGuideArray(obj.guides);
+    const newObj: Partial<Project> = {};
 
-    return isProject(obj) ? obj as Project : undefined;
+    newObj.id = obj.id;
+    newObj.name = obj.name;
+    newObj.date = obj.date;
+    newObj.description = obj.description;
+    if ('image' in obj && typeof obj.image === 'string') newObj.image = obj.image;
+    if ('tags' in obj) newObj.tags = filterTags(obj.tags);
+    if ('technologies' in obj && Array.isArray(obj.technologies)) {
+        const tempList = obj.technologies.map((item: any) => formatProjectTechnology(item));
+        newObj.technologies = filterProjectTechnologyArray(tempList);
+    }
+    if ('links' in obj && Array.isArray(obj.links)) {
+        const tempList = obj.links.map((item: any) => formatProjectLink(item));
+        newObj.links = filterProjectLinkArray(tempList);
+    }
+    if ('guides' in obj && Array.isArray(obj.guides)) {
+        const tempList = obj.guides.map((item: any) => formatProjectGuide(item));
+        const filteredList = filterProjectGuideArray(tempList);
+        if (filteredList.length > 0) newObj.guides = filteredList;
+    }
+
+    return isProject(newObj) ? newObj as Project : undefined;
 }
 
 export function filterProjectArray(list: any): Project[] {
@@ -58,5 +77,9 @@ export function filterProjectArray(list: any): Project[] {
 }
 
 export function isProjectArray(list: any): list is Project[] {
-    return Array.isArray(list) && (list.length > 0 && list.every(isProject)) || list.length === 0;
+    return Array.isArray(list) && list.length > 0 && list.every(isProject);
+}
+
+export function isValidProjectArray(list: any): list is Project[] {
+    return Array.isArray(list) && list.every(isProject);
 }
